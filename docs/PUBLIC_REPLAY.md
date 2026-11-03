@@ -1,5 +1,7 @@
 **Regrade the released pilot on CPU without model inference.** From the repository root:
 
+The replay commands below use files from the [tagged v0.2.1 checkout](https://github.com/alexcarterhq/wspbench/tree/pilot-v0.2.1). Check out that tag before running them.
+
 ```sh
 uv sync --frozen
 uv run --frozen wspbench-replay
