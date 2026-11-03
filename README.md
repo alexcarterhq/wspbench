@@ -1,6 +1,24 @@
-# WSPBench — research preview
+# WSPBench
 
-WSPBench evaluates LLMs reading, editing and constructing neural-network weights under explicit tool budgets. It separates three access conditions and grades numeric artifacts inside fixed, benchmark-owned architectures.
+WSPBench tests whether access to neural network weights helps an agent diagnose and repair a model. The agent forecasts the effects of candidate edits before it tests a patch. The scorer checks whether the patch fixes the target failure and preserves previously correct behavior on hidden examples.
+
+[Run the benchmark](experiments/README.md#diagnosis-and-selective-repair) · [Calibration results](reports/selective-repair-hard/README.md) · [Website](https://wspbench.com)
+
+## Changelog
+
+### Current benchmark: diagnosis and selective repair
+
+The main comparison gives one arm behavior probes and another arm the same probes plus weights. A scripted solver uses the same probe budget. The harder pilot covers four fault mechanisms and a clean control. In a follow-up with equal 12,000-token limits, Sol repaired one of four faults with behavior alone and two of four with weights and behavior. Two weight-assisted sessions exhausted the token allowance. [Follow-up results](reports/selective-repair-hard/budget-check.md)
+
+### Previous benchmark: Read and Write
+
+The v0.2.1 preview tested whether models could infer rules from small circuits or construct weights for a supplied task. Later paired Read pilots swapped checkpoints to test whether answers followed the weights. All three GPT models reached 100% with the true checkpoint in the nonlinear pilot, so we kept those tasks as sanity checks. [Public preview](https://github.com/alexcarterhq/wspbench/releases/tag/pilot-v0.2.1) · [Paired Read report](reports/paired-read-v2/README.md)
+
+Matthew Honnibal's critique distinguished reading weights directly from repairing a model with code and practice feedback. That distinction helped shape the new benchmark. [Read Honnibal's post](https://honnibal.dev/blog/astra-read-write-misleading)
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes. The release manifest and checksums refer to the tagged v0.2.1 archive.
+
+## Archived research preview
 
 | Condition | Solver access |
 |---|---|
@@ -43,7 +61,7 @@ The three challenge families are open Boolean-rule recovery, before/after edit p
 
 Conventional decoders, statistical readers, no-edit controls and capacity-limited constructors provide difficulty controls. Code-based B/C comparators do not become eligible no-tool A model scores. Reference witnesses establish representability; they do not establish generic search success. Read, Repair and Write remain separate rather than being combined into one capability score.
 
-The [current task revision](docs/REDESIGN_V0_2_1.md), [access design](docs/DESIGN_V0_2.md), [prompt-information policy](docs/PROMPT_INFORMATION.md) and [limitations](docs/LIMITATIONS.md) document these distinctions. v0.1 remains available as sanity-check code. Primary held-out scoring requires separate scientific admission, budget checks and a frozen protocol. A/B/C implementation and CPU checks alone do not establish headline admission.
+The [archived task revision](docs/REDESIGN_V0_2_1.md), [access design](docs/DESIGN_V0_2.md), [prompt-information policy](docs/PROMPT_INFORMATION.md) and [limitations](docs/LIMITATIONS.md) document these distinctions. v0.1 remains available as sanity-check code. Primary held-out scoring requires separate scientific admission, budget checks and a frozen protocol. A/B/C implementation and CPU checks alone do not establish headline admission.
 
 Harness/package version **0.2.0** and dataset revision **v0.2.1** identify different artifacts. The public release preserves the evaluated harness digest; new export/replay utilities sit outside that evaluated module set. The dependency lock uses CPU-only PyTorch wheels on Linux/Windows for optional generation and tests. PyTorch is not needed for saved-answer replay.
 
@@ -56,7 +74,7 @@ uv sync --frozen --all-extras
 uv run --frozen --all-extras python -m pytest -q
 ```
 
-CI runs the public replay and tests on CPU without model credentials. Tests use generated fixtures and mock model responses. Real generation is separate from replay and is never part of CI. See the [changelog](CHANGELOG.md) and [errata](ERRATA.md) for revisions and historical result exclusions. Website publication remains deferred.
+CI runs the public replay and tests on CPU without model credentials. Tests use generated fixtures and mock model responses. Real generation is separate from replay and is never part of CI. See the [changelog](CHANGELOG.md) and [errata](ERRATA.md) for revisions and historical result exclusions.
 
 ## License
 

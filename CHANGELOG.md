@@ -1,3 +1,15 @@
+# Changelog
+
+## Diagnosis and selective repair
+
+WSPBench now measures whether weight access helps an agent diagnose a failure and choose a patch that preserves correct behavior. Behavior probes, behavior plus weights, and behavior plus weights and activations are separate conditions. The scripted baseline uses the same probe budget. We kept the paired Read pilots as sanity checks after three GPT models reached 100% with true checkpoints.
+
+The harder calibration adds coupled gates, sensor routing, readout redistribution, cross-layer drift, and a clean control. In the matched Sol follow-up, weights helped fix one additional fault. Two other weight-assisted sessions exhausted the output allowance. [Calibration report](reports/selective-repair-hard/README.md) · [Sol follow-up](reports/selective-repair-hard/budget-check.md)
+
+Matthew Honnibal's critique drew a distinction between reading weights and repairing a model with code and feedback. The current benchmark tests that distinction with matched access conditions. [Read Honnibal's post](https://honnibal.dev/blog/astra-read-write-misleading)
+
+## Archived v0.2.1 research preview
+
 **Research preview: `pilot-v0.2.1`, November 3, 2026.** The harness/package version is `0.2.0`; the public development dataset revision is `0.2.1`. These identifiers are intentionally separate. The evaluated runtime snapshot is preserved in the public provenance manifests.
 
 - Added a keyless CPU replay path for all 28 public development references and eighteen saved model submissions.
@@ -12,4 +24,4 @@ The cohort's token-price estimate is $2.2581618. The transport canary and histor
 
 Earlier development replaced saturated catalog tasks with composed Boolean microcircuits, added structured-reader and construction controls, balanced real/sham edits, checked split equivalence, and strengthened condition-specific feasibility and admission. The v0.1 pool remains available in source as sanity checks. Earlier design drafts, sanity runs and CPU artifacts do not constitute results on this preview's measured harness.
 
-Website work, primary headline scoring and a submission service remain deferred.
+The research preview covered development scoring and replay.
