@@ -1,0 +1,72 @@
+[
+  {
+    "actor_id": "metadata_prior",
+    "actor_kind": "static_zero_start_control",
+    "actor_name": "metadata_prior",
+    "actor_type": "baseline",
+    "capacity_tier": "microcircuit_4049",
+    "condition": "B",
+    "family": "compositional_synthesis",
+    "mechanism_family_id": "compositional_synthesis:a1760c3fc1320582",
+    "metrics": {
+      "affected_accuracy": 0.0,
+      "edit_fraction": 0.0,
+      "edit_norm": 0.0,
+      "exhaustive_agreement": 0.734375,
+      "false_positive_change_rate": 0.0,
+      "parameters": 4049,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "target_accuracy": 0.7330729166666666
+    },
+    "parent_problem_id": "f41e6018bbedad2c",
+    "question_digest": "51903bac2477222dcb264c2e7331cf5935192c11df08e9406d771e589eb59d85",
+    "same_access_model_score": false,
+    "skill": "write",
+    "split": "dev",
+    "status": "scored",
+    "submission": {
+      "patch": []
+    },
+    "success": false,
+    "target_digest": "1fb71e5b5fae0c688202721dd28cd491f565592b9a933641a332bf3494cc1234",
+    "target_stratum": "constructed_microcircuit",
+    "task_id": "0ccf05ea24942ed4",
+    "weight_view": "full"
+  },
+  {
+    "actor_id": "metadata_prior",
+    "actor_kind": "static_zero_start_control",
+    "actor_name": "metadata_prior",
+    "actor_type": "baseline",
+    "capacity_tier": "microcircuit_4049",
+    "condition": "B",
+    "family": "compositional_synthesis",
+    "mechanism_family_id": "compositional_synthesis:e7e3c095f887887f",
+    "metrics": {
+      "affected_accuracy": 0.0,
+      "edit_fraction": 0.0,
+      "edit_norm": 0.0,
+      "exhaustive_agreement": 0.671875,
+      "false_positive_change_rate": 0.0,
+      "parameters": 4049,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "target_accuracy": 0.6692708333333334
+    },
+    "parent_problem_id": "8a23736a6bfb5b06",
+    "question_digest": "e89115b8514b3de66ab05a35209449610a0936f7b1c0c27f11b8af55562d1626",
+    "same_access_model_score": false,
+    "skill": "write",
+    "split": "dev",
+    "status": "scored",
+    "submission": {
+      "patch": []
+    },
+    "success": false,
+    "target_digest": "1fb71e5b5fae0c688202721dd28cd491f565592b9a933641a332bf3494cc1234",
+    "target_stratum": "constructed_microcircuit",
+    "task_id": "a1393d5b54c62b47",
+    "weight_view": "full"
+  }
+]

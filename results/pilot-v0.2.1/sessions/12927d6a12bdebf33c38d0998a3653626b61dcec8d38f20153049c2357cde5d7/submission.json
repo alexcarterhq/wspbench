@@ -1,0 +1,24 @@
+{
+  "after_program": {
+    "left": {
+      "index": 3,
+      "op": "input"
+    },
+    "op": "nand",
+    "right": {
+      "index": 4,
+      "op": "input"
+    }
+  },
+  "before_program": {
+    "left": {
+      "index": 3,
+      "op": "input"
+    },
+    "op": "nand",
+    "right": {
+      "index": 4,
+      "op": "input"
+    }
+  }
+}

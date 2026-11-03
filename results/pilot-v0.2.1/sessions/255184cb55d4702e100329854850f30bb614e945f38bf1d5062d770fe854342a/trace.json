@@ -1,0 +1,49 @@
+[
+  {
+    "output": {
+      "completion": "{\"program\":{\"op\":\"and\",\"left\":{\"op\":\"input\",\"index\":0},\"right\":{\"op\":\"input\",\"index\":5}}}",
+      "input_context_tokens": 33383,
+      "model": "gpt-6-luna",
+      "time": 243.69305683400307,
+      "usage": {
+        "input_tokens": 3,
+        "input_tokens_cache_read": null,
+        "input_tokens_cache_write": 33380,
+        "output_tokens": 26101,
+        "reasoning_tokens": 26067,
+        "total_tokens": 59484
+      }
+    },
+    "tool": "model_turn",
+    "turn": 1,
+    "usage": {
+      "input_tokens": 3,
+      "input_tokens_cache_read": null,
+      "input_tokens_cache_write": 33380,
+      "output_tokens": 26101,
+      "reasoning_tokens": 26067,
+      "total_tokens": 59484
+    }
+  },
+  {
+    "observation_count": 0,
+    "submission": {
+      "program": {
+        "left": {
+          "index": 0,
+          "op": "input"
+        },
+        "op": "and",
+        "right": {
+          "index": 5,
+          "op": "input"
+        }
+      }
+    },
+    "tool": "commit"
+  },
+  {
+    "observation_count": 0,
+    "tool": "submit"
+  }
+]

@@ -1,0 +1,641 @@
+{
+  "admission_status": "candidate",
+  "architecture": {
+    "activation_scalars_per_example": 205,
+    "boundary_tensors": [
+      "e",
+      "p",
+      "w1",
+      "b1"
+    ],
+    "forward_definition": "x=e[concat(input,[4])]+p; a=softmax((x@q.T)[-1]@(x@k.T)[:5].T/sqrt(12)); z=(a@(x@v.T)[:5])@o.T; logits=relu(z@w0.T+b0)@w1.T+b1",
+    "heads": 2,
+    "input_shape": [
+      5
+    ],
+    "kind": "attention_pool",
+    "output_shape": [
+      2
+    ],
+    "shapes": {
+      "b0": [
+        32
+      ],
+      "b1": [
+        6
+      ],
+      "e": [
+        5,
+        12
+      ],
+      "k": [
+        12,
+        12
+      ],
+      "o": [
+        12,
+        12
+      ],
+      "p": [
+        6,
+        12
+      ],
+      "q": [
+        12,
+        12
+      ],
+      "v": [
+        12,
+        12
+      ],
+      "w0": [
+        32,
+        12
+      ],
+      "w1": [
+        6,
+        32
+      ]
+    }
+  },
+  "benchmark_version": "0.2.0",
+  "capacity_tier": "medium_4096",
+  "conditions": [
+    "A",
+    "B",
+    "C"
+  ],
+  "family": "causal_forecast",
+  "id": "4f31a8b633aa584e",
+  "instruction": "Predict changed-output fractions for each unqueried forecast intervention, compared with the supplied original network, over all 363 public-domain inputs and separately for both output heads. Final intervention IDs cannot be queried. Submit {effects:{id:[head0,head1]}}. Practice probes accept only practice IDs.",
+  "limits": {
+    "activation_scalars": 256000,
+    "analysis_calls": 12,
+    "candidate_patches": 8,
+    "cpu_seconds": 120,
+    "episode_steps": 64,
+    "episodes": 16,
+    "example_evaluations": 128,
+    "input_tokens": 160000,
+    "memory_mb": 2048,
+    "model_turns": 16,
+    "output_tokens": 32000,
+    "wall_seconds": 900
+  },
+  "mechanism_family_id": "d293e5aac7616642",
+  "parent_problem_id": "0c2a1280432d563c",
+  "public": {
+    "activation_scalars_per_example": 205,
+    "answer_schema": {
+      "absolute_tolerance": 0.01,
+      "estimand": "exhaustive_domain_intervention_heldout",
+      "type": "effects",
+      "units": "fraction of all 363 domain inputs with changed argmax, separately for each head"
+    },
+    "declared_programs": [
+      {
+        "codes": [
+          2,
+          1,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "cuts": [
+            3,
+            7
+          ],
+          "op": "threshold"
+        }
+      },
+      {
+        "codes": [
+          2,
+          1,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "modulus": 3,
+          "offset": 0,
+          "op": "mod"
+        }
+      }
+    ],
+    "domain": {
+      "count": 363,
+      "maximum_length": 5,
+      "pad": 3,
+      "symbols": [
+        0,
+        1,
+        2
+      ]
+    },
+    "evaluation_role": "diagnostic_sanity",
+    "forecast_interventions": [
+      {
+        "id": "f0",
+        "patch": [
+          {
+            "factor": 1,
+            "op": "scale",
+            "tensor": "q"
+          }
+        ]
+      },
+      {
+        "id": "f1",
+        "patch": [
+          {
+            "factor": 0.67,
+            "op": "scale",
+            "tensor": "o"
+          }
+        ]
+      },
+      {
+        "id": "f2",
+        "patch": [
+          {
+            "axis": 0,
+            "indices": [
+              3,
+              4,
+              5
+            ],
+            "op": "zero",
+            "tensor": "w1"
+          }
+        ]
+      },
+      {
+        "id": "f3",
+        "patch": [
+          {
+            "factor": 0.67,
+            "op": "scale",
+            "tensor": "o"
+          },
+          {
+            "axis": 0,
+            "indices": [
+              0,
+              1,
+              2
+            ],
+            "op": "zero",
+            "tensor": "w1"
+          }
+        ]
+      }
+    ],
+    "generator_revision": "composed-v2.1",
+    "grammar_scope": "position-weighted symbol recoding, modular/threshold readouts, nested scalar conditionals",
+    "observation_policy": {
+      "activations": true,
+      "final_bank_fixed": true,
+      "practice_only": true
+    },
+    "practice_interventions": [
+      {
+        "id": "p0",
+        "patch": [
+          {
+            "factor": 0.9,
+            "op": "scale",
+            "tensor": "q"
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "patch": [
+          {
+            "factor": 0.5,
+            "op": "scale",
+            "tensor": "v"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "patch": [
+          {
+            "axis": 0,
+            "indices": [
+              0,
+              1,
+              2
+            ],
+            "op": "zero",
+            "tensor": "w1"
+          }
+        ]
+      }
+    ],
+    "practice_size": 64,
+    "program_candidates": [
+      {
+        "codes": [
+          0,
+          1,
+          2
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "modulus": 3,
+          "offset": 0,
+          "op": "mod"
+        }
+      },
+      {
+        "codes": [
+          1,
+          2,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "readout": {
+          "modulus": 3,
+          "offset": 1,
+          "op": "mod"
+        }
+      },
+      {
+        "codes": [
+          2,
+          0,
+          1
+        ],
+        "op": "weighted",
+        "positions": [
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        "readout": {
+          "modulus": 3,
+          "offset": 2,
+          "op": "mod"
+        }
+      },
+      {
+        "codes": [
+          2,
+          1,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "cuts": [
+            3,
+            7
+          ],
+          "op": "threshold"
+        }
+      },
+      {
+        "codes": [
+          0,
+          1,
+          2
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              4,
+              9
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "modulus": 3,
+            "offset": 1,
+            "op": "mod"
+          },
+          "threshold": 4
+        }
+      },
+      {
+        "codes": [
+          1,
+          2,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              5,
+              11
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "modulus": 3,
+            "offset": 2,
+            "op": "mod"
+          },
+          "threshold": 5
+        }
+      },
+      {
+        "codes": [
+          2,
+          0,
+          1
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              3,
+              7
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "modulus": 3,
+            "offset": 0,
+            "op": "mod"
+          },
+          "threshold": 6
+        }
+      },
+      {
+        "codes": [
+          2,
+          1,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              4,
+              9
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "modulus": 3,
+            "offset": 1,
+            "op": "mod"
+          },
+          "threshold": 7
+        }
+      },
+      {
+        "codes": [
+          0,
+          1,
+          2
+        ],
+        "op": "weighted",
+        "positions": [
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              5,
+              11
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "else": {
+              "modulus": 3,
+              "offset": 0,
+              "op": "mod"
+            },
+            "op": "conditional",
+            "then": {
+              "cuts": [
+                3,
+                7
+              ],
+              "op": "threshold"
+            },
+            "threshold": 11
+          },
+          "threshold": 4
+        }
+      },
+      {
+        "codes": [
+          1,
+          2,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              3,
+              7
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "else": {
+              "modulus": 3,
+              "offset": 1,
+              "op": "mod"
+            },
+            "op": "conditional",
+            "then": {
+              "cuts": [
+                4,
+                9
+              ],
+              "op": "threshold"
+            },
+            "threshold": 9
+          },
+          "threshold": 5
+        }
+      },
+      {
+        "codes": [
+          2,
+          0,
+          1
+        ],
+        "op": "weighted",
+        "positions": [
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              4,
+              9
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "else": {
+              "modulus": 3,
+              "offset": 2,
+              "op": "mod"
+            },
+            "op": "conditional",
+            "then": {
+              "cuts": [
+                5,
+                11
+              ],
+              "op": "threshold"
+            },
+            "threshold": 10
+          },
+          "threshold": 6
+        }
+      },
+      {
+        "codes": [
+          2,
+          1,
+          0
+        ],
+        "op": "weighted",
+        "positions": [
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        "readout": {
+          "else": {
+            "cuts": [
+              5,
+              11
+            ],
+            "op": "threshold"
+          },
+          "op": "conditional",
+          "then": {
+            "else": {
+              "modulus": 3,
+              "offset": 0,
+              "op": "mod"
+            },
+            "op": "conditional",
+            "then": {
+              "cuts": [
+                3,
+                7
+              ],
+              "op": "threshold"
+            },
+            "threshold": 11
+          },
+          "threshold": 7
+        }
+      }
+    ],
+    "prompt_information": {
+      "diagnosis_scope": "task_specification",
+      "hint_level": "neutral",
+      "history": [],
+      "optimization": "none",
+      "source": "benchmark_authored"
+    }
+  },
+  "schema_version": "2",
+  "skill": "read",
+  "split": "dev",
+  "suite_tier": "challenge",
+  "target_stratum": "trained"
+}

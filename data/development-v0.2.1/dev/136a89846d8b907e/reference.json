@@ -1,0 +1,119 @@
+{
+  "reference_submission": {
+    "program": {
+      "args": [
+        {
+          "left": {
+            "left": {
+              "left": {
+                "index": 3,
+                "op": "input"
+              },
+              "op": "nand",
+              "right": {
+                "index": 3,
+                "op": "input"
+              }
+            },
+            "op": "or",
+            "right": {
+              "left": {
+                "index": 7,
+                "op": "input"
+              },
+              "op": "nand",
+              "right": {
+                "index": 1,
+                "op": "input"
+              }
+            }
+          },
+          "op": "nand",
+          "right": {
+            "left": {
+              "left": {
+                "index": 0,
+                "op": "input"
+              },
+              "op": "xor",
+              "right": {
+                "index": 3,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 5,
+                "op": "input"
+              },
+              "op": "xor",
+              "right": {
+                "index": 1,
+                "op": "input"
+              }
+            }
+          }
+        },
+        {
+          "left": {
+            "left": {
+              "left": {
+                "index": 2,
+                "op": "input"
+              },
+              "op": "nor",
+              "right": {
+                "index": 6,
+                "op": "input"
+              }
+            },
+            "op": "nor",
+            "right": {
+              "left": {
+                "index": 7,
+                "op": "input"
+              },
+              "op": "xor",
+              "right": {
+                "index": 8,
+                "op": "input"
+              }
+            }
+          },
+          "op": "or",
+          "right": {
+            "left": {
+              "left": {
+                "index": 2,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "nand",
+            "right": {
+              "left": {
+                "index": 5,
+                "op": "input"
+              },
+              "op": "nand",
+              "right": {
+                "index": 1,
+                "op": "input"
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "op": "input"
+        }
+      ],
+      "op": "majority"
+    }
+  }
+}

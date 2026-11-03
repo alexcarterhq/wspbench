@@ -1,0 +1,42 @@
+name: Community reproduction or model run
+description: Submit an offline regrading or a new inference run for review.
+labels: [community-result]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Contribution type
+      options:
+        - CPU regrading of released submissions
+        - New model inference on public development tasks
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Source commit, harness version, dataset revision, and bundle digest
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Reproduction setup
+      description: Give the commands, platform, dependency lock, and sanitized output. For new inference include provider/model identifier, alias or snapshot date, settings, attempts, condition, and budget.
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Reviewable public artifacts
+      description: Include or link sanitized submissions, complete attempt records, usage, timing, costs, failures, and trace summaries. Never include credentials, account/request identifiers, private held-out fixtures, or generation seeds. Preserve unsuccessful attempts.
+    validations:
+      required: true
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Scope and review
+      options:
+        - label: I distinguish offline regrading from new model inference and have not selected only the best attempts.
+          required: true
+        - label: I understand that this remains a community result until the declared matrix, provenance, scoring, and traces pass maintainer review.
+          required: true

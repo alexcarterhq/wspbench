@@ -1,0 +1,10 @@
+{
+  "after_program": {
+    "index": 9,
+    "op": "input"
+  },
+  "before_program": {
+    "index": 9,
+    "op": "input"
+  }
+}

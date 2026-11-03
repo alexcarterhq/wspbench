@@ -1,0 +1,15 @@
+WSPBench — independent weight-space programming evaluation pilot.
+Copyright 2026 WSPBench contributors.
+
+Original source code is licensed under Apache License 2.0 (LICENSE).
+Original generated benchmark data and development examples are licensed under
+Creative Commons Attribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+WSPBench is independent of the authors of Sparks of Weight-Space Programming,
+OpenAI, Anthropic, DeepSeek, Alibaba/Qwen, and the benchmarks cited in the
+methodology. Their names identify research and model providers, not endorsement.
+
+Dependencies retain their respective licenses. No original experiment logs,
+MinAtar source, public model checkpoints, or third-party benchmark question
+collections are redistributed as WSPBench's held-out evaluation dataset.

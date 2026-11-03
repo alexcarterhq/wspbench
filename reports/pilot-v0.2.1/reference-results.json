@@ -1,0 +1,426 @@
+[
+  {
+    "task_id": "0ccf05ea24942ed4",
+    "family": "compositional_synthesis",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.04075080266732527,
+      "edit_norm": 15.684387141358123,
+      "parameters": 4049
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "0e688589bf551b1f",
+    "family": "edit_effects",
+    "success": true,
+    "metrics": {
+      "before_agreement": 1.0,
+      "after_agreement": 1.0,
+      "affected_precision": 1.0,
+      "affected_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "consequence_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "10c89bda66a07dd9",
+    "family": "loop_repair",
+    "success": true,
+    "metrics": {
+      "correct_completion": 1.0,
+      "completion_rate": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "valid_repetition_accuracy": 1.0,
+      "truncation_rate": 0.0,
+      "noncompletion_rate": 0.0,
+      "edit_fraction": 0.0,
+      "edit_norm": 0.0,
+      "parameters": 1204
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "136a89846d8b907e",
+    "family": "rule_recovery",
+    "success": true,
+    "metrics": {
+      "functional_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "2b12b0f4688c3852",
+    "family": "edit_effects",
+    "success": true,
+    "metrics": {
+      "before_agreement": 1.0,
+      "after_agreement": 1.0,
+      "affected_precision": 1.0,
+      "affected_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "consequence_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "438cb8022f56ed11",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "4f31a8b633aa584e",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "62a9ccaf392d7c3f",
+    "family": "rule_recovery",
+    "success": true,
+    "metrics": {
+      "functional_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "6aa9def2b949139c",
+    "family": "loop_repair",
+    "success": true,
+    "metrics": {
+      "correct_completion": 1.0,
+      "completion_rate": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "valid_repetition_accuracy": 1.0,
+      "truncation_rate": 0.0,
+      "noncompletion_rate": 0.0,
+      "edit_fraction": 0.0016611295681063123,
+      "edit_norm": 5.656854249492381,
+      "parameters": 1204
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "746678b4e83f622c",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "7d6d347790646dfa",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "90051af877cf09fd",
+    "family": "rule_recovery",
+    "success": true,
+    "metrics": {
+      "functional_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "94bf00ec34fc57d3",
+    "family": "compositional_synthesis",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.0400098789824648,
+      "edit_norm": 14.2828568570857,
+      "parameters": 4049
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "97f31af465547846",
+    "family": "edit_effects",
+    "success": true,
+    "metrics": {
+      "before_agreement": 1.0,
+      "after_agreement": 1.0,
+      "affected_precision": 1.0,
+      "affected_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "consequence_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "a1393d5b54c62b47",
+    "family": "compositional_synthesis",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.04099777722894542,
+      "edit_norm": 14.0,
+      "parameters": 4049
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "a76b3b8daca764ca",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "bc2288d5ee898bac",
+    "family": "coupled_repair",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.0136986301369863,
+      "edit_norm": 2.256874629405855,
+      "parameters": 438
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "cb64a3c92996f1ec",
+    "family": "compositional_synthesis",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.04297357372190665,
+      "edit_norm": 14.2828568570857,
+      "parameters": 4049
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "d2b5422c269ff990",
+    "family": "coupled_repair",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.0,
+      "edit_norm": 0.0,
+      "parameters": 438
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "db27f6bb678f346d",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "dce653afc78db783",
+    "family": "coupled_repair",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.0136986301369863,
+      "edit_norm": 1.8428849155245572,
+      "parameters": 438
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "ddffe35c0d36576d",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "dec8e87fda544e4d",
+    "family": "loop_repair",
+    "success": true,
+    "metrics": {
+      "correct_completion": 1.0,
+      "completion_rate": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "valid_repetition_accuracy": 1.0,
+      "truncation_rate": 0.0,
+      "noncompletion_rate": 0.0,
+      "edit_fraction": 0.0016611295681063123,
+      "edit_norm": 5.656854249492381,
+      "parameters": 1204
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "e0e2e5dabd7ec50a",
+    "family": "coupled_repair",
+    "success": true,
+    "metrics": {
+      "target_accuracy": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "exhaustive_agreement": 1.0,
+      "affected_accuracy": 1.0,
+      "false_positive_change_rate": 0.0,
+      "edit_fraction": 0.0136986301369863,
+      "edit_norm": 0.7825179280748044,
+      "parameters": 438
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "e69f5649466c874a",
+    "family": "loop_repair",
+    "success": true,
+    "metrics": {
+      "correct_completion": 1.0,
+      "completion_rate": 1.0,
+      "retention_accuracy": 1.0,
+      "retention_loss": 0.0,
+      "valid_repetition_accuracy": 1.0,
+      "truncation_rate": 0.0,
+      "noncompletion_rate": 0.0,
+      "edit_fraction": 0.0016611295681063123,
+      "edit_norm": 5.656854249492381,
+      "parameters": 1204
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "f0057721e75f1828",
+    "family": "edit_effects",
+    "success": true,
+    "metrics": {
+      "before_agreement": 1.0,
+      "after_agreement": 1.0,
+      "affected_precision": 1.0,
+      "affected_recall": 1.0,
+      "false_positive_rate": 0.0,
+      "consequence_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "f72b503e121e27f3",
+    "family": "causal_forecast",
+    "success": true,
+    "metrics": {
+      "effect_mae": 0.0,
+      "effect_max_error": 0.0,
+      "effect_accuracy": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  },
+  {
+    "task_id": "f987f563d00f687f",
+    "family": "rule_recovery",
+    "success": true,
+    "metrics": {
+      "functional_agreement": 1.0,
+      "exhaustive_agreement": 1.0
+    },
+    "status": "scored",
+    "reason": null
+  }
+]

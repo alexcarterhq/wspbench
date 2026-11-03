@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "note": "Candidates, not measured results. Resolve upstream versions and confirm current uncached/peak prices before paid runs. Never put API keys in this file.",
+  "models": [
+    {
+      "id": "openai-astra",
+      "provider": "openai",
+      "model": "openai/gpt-6-astra",
+      "api_key_env": "OPENAI_API_KEY",
+      "snapshot": "gpt-6-astra",
+      "verified_at": "2026-11-02T20:46:01.852280+00:00",
+      "generate_config": {
+        "reasoning_effort": "high"
+      },
+      "pricing": {
+        "input_per_million": 10.0,
+        "output_per_million": 50.0,
+        "verified_at": "2026-11-02T20:46:01.852280+00:00",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "cache_write_per_million": 12.5,
+        "cache_read_per_million": 1.0
+      },
+      "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+      "verification": {
+        "method": "Authenticated GET /v1/models confirmed model ID; official model documentation confirmed prices and available snapshot label.",
+        "source": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+      }
+    },
+    {
+      "id": "anthropic-fable",
+      "provider": "anthropic",
+      "model": "anthropic/claude-fable-5-1",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "snapshot": null,
+      "verified_at": null,
+      "generate_config": {
+        "reasoning_effort": "high"
+      },
+      "pricing": {
+        "input_per_million": null,
+        "output_per_million": null,
+        "verified_at": null,
+        "source": "https://platform.claude.com/docs/en/models/overview",
+        "cache_write_per_million": null,
+        "cache_read_per_million": null
+      }
+    },
+    {
+      "id": "deepseek-pro",
+      "provider": "deepseek",
+      "model": "deepseek/deepseek-v4-pro",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "snapshot": null,
+      "verified_at": null,
+      "generate_config": {
+        "reasoning_effort": "high"
+      },
+      "pricing": {
+        "input_per_million": null,
+        "output_per_million": null,
+        "verified_at": null,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "cache_write_per_million": null,
+        "cache_read_per_million": null
+      }
+    },
+    {
+      "id": "qwen-max",
+      "provider": "qwen",
+      "model": "openai-api/qwen/qwen3.8-max",
+      "api_key_env": "DASHSCOPE_API_KEY",
+      "base_url": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+      "snapshot": null,
+      "verified_at": null,
+      "generate_config": {},
+      "pricing": {
+        "input_per_million": null,
+        "output_per_million": null,
+        "verified_at": null,
+        "source": "https://www.alibabacloud.com/help/en/model-studio/models",
+        "cache_write_per_million": null,
+        "cache_read_per_million": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: >-
+  If you use WSPBench, cite this software and record the source commit,
+  dataset revision and access condition used in your experiment.
+type: software
+title: "WSPBench: controlled weight-space programming evaluation"
+authors:
+  - name: WSPBench contributors
+version: "0.2.0"
+date-released: "2026-11-03"
+license: Apache-2.0
+abstract: >-
+  Independent small-network research preview separating no-tool weight reasoning,
+  bounded computational weight analysis, and instrumented diagnosis and repair.
+  The public pilot uses dataset revision 0.2.1 and contains eighteen audited
+  condition-A development sessions. Public CPU replay regrades saved submissions;
+  it does not reproduce proprietary model inference.
+keywords:
+  - weight-space programming
+  - language-model evaluation
+  - interpretability
+  - benchmark
+  - reproducibility

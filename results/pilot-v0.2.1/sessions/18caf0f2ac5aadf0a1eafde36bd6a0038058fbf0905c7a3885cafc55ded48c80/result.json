@@ -1,0 +1,164 @@
+{
+  "actor_id": "openai-luna",
+  "actor_name": "openai-luna",
+  "actor_type": "model",
+  "actual_observations": 0,
+  "artifact_hashes": {
+    "prompt.json": "c88a2618bdb0548762e54dbe92be25c418ca48def3a2c01edac472af40a0adb3",
+    "submission.json": "5d272d3d42edc12cf49dd5612c65bd50b63f4d1cca776c4bc34590e8f9948106",
+    "trace.json": "fea7126ee74e5da9a7a2caf6983f2362a3d708bab0d544a09d490b1c77240c36"
+  },
+  "attempt": 1,
+  "audit": {
+    "claim": "Access/counter checks do not prove absence of mental simulation or semantic forward emulation.",
+    "findings": [],
+    "note": "Original recorded trace independently reviewed before export. Public trace omits provider identifiers and encrypted reasoning; scoring, usage and access events are retained. Offline replay checks these public artifacts, not provider-side execution.",
+    "original_trace_sha256": "e155a857158c054280562e80875e1290a2d5a49b25092fd0312517e22d731da7",
+    "reviewer": "independent-gpt-transport-review",
+    "status": "approved",
+    "trace_sha256": "e967f2a894f1edb846ed510d3f21254bd40a1483bf8ee79fa195b80c9d45914c"
+  },
+  "benchmark_version": "0.2.0",
+  "canonical_prompt_digest": "b023438dae12c8d685f76af93fcfe8e8b633e76c1af98916466483bd9d1c46b8",
+  "capacity_tier": "microcircuit_4049",
+  "condition": "A",
+  "cost_method": "Category-specific token estimate; reasoning included in output once",
+  "cost_usd": 0.010245174999999999,
+  "counters": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "cpu_seconds": 0.24408400000000086,
+  "family": "compositional_synthesis",
+  "harness_digest": "6b0a481c0774120952a4f0ad5ce2cd29f4d695703d6f8f04f8570a40b9936ed2",
+  "headline_eligible": false,
+  "hint_level": "neutral",
+  "id": "18caf0f2ac5aadf0a1eafde36bd6a0038058fbf0905c7a3885cafc55ded48c80",
+  "mechanism_family_id": "compositional_synthesis:e7e3c095f887887f",
+  "metrics": {
+    "affected_accuracy": 0.0,
+    "edit_fraction": 0.0,
+    "edit_norm": 0.0,
+    "exhaustive_agreement": 0.671875,
+    "false_positive_change_rate": 0.0,
+    "parameters": 4049,
+    "retention_accuracy": 1.0,
+    "retention_loss": 0.0,
+    "target_accuracy": 0.6692708333333334
+  },
+  "model_config": {
+    "api_key_env": "OPENAI_API_KEY",
+    "generate_config": {
+      "reasoning_effort": "high",
+      "reasoning_summary": "none"
+    },
+    "id": "openai-luna",
+    "model": "openai/gpt-6-luna",
+    "model_args": {
+      "responses_api": true,
+      "service_tier": "default",
+      "streaming": true
+    },
+    "pricing": {
+      "cache_read_per_million": 0.01,
+      "cache_ttl": "30m_default",
+      "cache_write_per_million": 0.125,
+      "input_per_million": 0.1,
+      "output_per_million": 0.5,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "verified_at": "2026-11-03"
+    },
+    "provider": "openai",
+    "snapshot": "gpt-6-luna",
+    "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+    "verified_at": "2026-11-03"
+  },
+  "model_config_digest": "a83c85223298b6621af3350a1a3a2b24072ae6e7496308ae3be8ef923d1fcc20",
+  "model_id": "openai-luna",
+  "observation_usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "parent_problem_id": "8a23736a6bfb5b06",
+  "phase": "calibration",
+  "prompt_digest": "9ead117050884b7f2bbdd39904ba8582270659fa25e1c6f0a972ba237c2e17f0",
+  "prompt_information": {
+    "diagnosis_scope": "task_specification",
+    "hint_level": "neutral",
+    "history": [],
+    "optimization": "none",
+    "source": "benchmark_authored"
+  },
+  "protocol_digest": "e49e01dd756ab9e02ea172fd532cfa717bd0eab96fa47c84d8c468c1f4203c7b",
+  "provider": "openai",
+  "question_digest": "d18768972fd516fa2da6d7dcd1c30230a9271124b719088988f1f0af30992781",
+  "schema_version": "2",
+  "score_reason": null,
+  "score_status": "scored",
+  "serialization_digest": "f36708aebdc4226b0c92a2971b87a5ddbabbc206c097ded937ed909d7bc8b38f",
+  "skill": "write",
+  "snapshot_actual_observations": {
+    "0": 0,
+    "128": 0,
+    "32": 0
+  },
+  "snapshot_unit": "example_evaluations",
+  "snapshots": {
+    "0": {
+      "patch": []
+    },
+    "128": {
+      "patch": []
+    },
+    "32": {
+      "patch": []
+    }
+  },
+  "source_artifact_hashes": {
+    "prompt.json": "1889b6858826d477577a8738ab2df5e09f07e71afd85057792385189cf186389",
+    "submission.json": "85a2f7c0324053733f61eaa5928b90c5527b90ccc4f531966facf1a89867d40f",
+    "trace.json": "d0c88284217eede4e6fee03c45655a26dded5d683ffe1d887c5f8af9988c0661"
+  },
+  "source_result_sha256": "08c3a9cdb3e23473574d5a5bae010e7b54c34953865fe4aa5c7aa42781d54145",
+  "split": "dev",
+  "status": "completed",
+  "submission": {
+    "patch": []
+  },
+  "submitted": true,
+  "success": false,
+  "suite_digest": "944ab7656cb18ccd7a44560ff9b2a9f75d48fcb3464a2049ec4dbde6ad30b8fc",
+  "suite_tier": "challenge_candidate",
+  "target_digest": "1fb71e5b5fae0c688202721dd28cd491f565592b9a933641a332bf3494cc1234",
+  "target_stratum": "constructed_microcircuit",
+  "task_id": "a1393d5b54c62b47",
+  "turns": 1,
+  "usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "input_tokens": 3,
+    "input_tokens_cache_read": 0,
+    "input_tokens_cache_write": 56051,
+    "input_tokens_total": 56054,
+    "output_tokens": 6477,
+    "reasoning_tokens": 6467,
+    "steps": 0,
+    "total_tokens": 62531
+  },
+  "wall_seconds": 56.99516683300317,
+  "weight_view": "full"
+}

@@ -1,0 +1,32 @@
+name: Bug or replay failure
+description: Report a reproducible problem with public fixtures, grading, or tooling.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include API keys, account identifiers, private evaluation data, or raw operational logs. Redact personal paths from command output.
+  - type: input
+    id: revision
+    attributes:
+      label: Source commit and dataset revision
+      description: Include the release tag or commit and the public data manifest version.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Give the exact command, OS, Python version, and dependency setup.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized output or failing public fixture
+      description: Prefer a small reproduction that uses public or newly generated data.

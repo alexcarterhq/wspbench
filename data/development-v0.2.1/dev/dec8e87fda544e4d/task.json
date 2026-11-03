@@ -1,0 +1,108 @@
+{
+  "admission_status": "candidate",
+  "architecture": {
+    "activation_scalars_per_example": 1792,
+    "boundary_tensors": [
+      "encoder",
+      "encoder_bias",
+      "out",
+      "ob"
+    ],
+    "forward_definition": "h=relu(one_hot(input,4).flatten()@encoder.T+encoder_bias); emit argmax(out@h+ob), stop on token3; h=relu(r@h+rb)",
+    "heads": 1,
+    "horizon": 64,
+    "input_shape": [
+      5
+    ],
+    "kind": "relu_recurrent",
+    "output_shape": [
+      64
+    ],
+    "shapes": {
+      "encoder": [
+        24,
+        20
+      ],
+      "encoder_bias": [
+        24
+      ],
+      "ob": [
+        4
+      ],
+      "out": [
+        4,
+        24
+      ],
+      "r": [
+        24,
+        24
+      ],
+      "rb": [
+        24
+      ]
+    }
+  },
+  "benchmark_version": "0.2.0",
+  "capacity_tier": "medium_4096",
+  "conditions": [
+    "C"
+  ],
+  "family": "loop_repair",
+  "id": "dec8e87fda544e4d",
+  "instruction": "Mechanism hint: this recurrent model may have a repetition/halting attractor. Repair correct copying and completion while preserving valid long repetitive outputs. Submit a numeric weight patch. This is a diagnosis-supplied mechanism control.",
+  "limits": {
+    "activation_scalars": 256000,
+    "analysis_calls": 12,
+    "candidate_patches": 8,
+    "cpu_seconds": 120,
+    "episode_steps": 64,
+    "episodes": 16,
+    "example_evaluations": 128,
+    "input_tokens": 160000,
+    "memory_mb": 2048,
+    "model_turns": 16,
+    "output_tokens": 32000,
+    "wall_seconds": 900
+  },
+  "mechanism_family_id": "eos_attractor_trigger_1",
+  "parent_problem_id": "5d3fd60667d6212a",
+  "public": {
+    "activation_scalars_per_example": 1792,
+    "answer_schema": {
+      "type": "numeric_patch"
+    },
+    "domain": {
+      "count": 363,
+      "maximum_length": 5,
+      "pad": 3,
+      "symbols": [
+        0,
+        1,
+        2
+      ]
+    },
+    "evaluation_role": "diagnostic_sanity",
+    "generator_revision": "composed-v2.1",
+    "grammar_scope": "position-weighted symbol recoding, modular/threshold readouts, nested scalar conditionals",
+    "horizon": 64,
+    "observation_policy": {
+      "activations": true,
+      "final_bank_fixed": true,
+      "practice_only": true
+    },
+    "practice_size": 64,
+    "prompt_information": {
+      "diagnosis_scope": "looping_mechanism",
+      "hint_level": "mechanism",
+      "history": [],
+      "optimization": "none",
+      "source": "benchmark_authored"
+    },
+    "task_goal": "Copy every nonpadding input token in order, then emit EOS token 3, including long repeated inputs."
+  },
+  "schema_version": "2",
+  "skill": "repair",
+  "split": "dev",
+  "suite_tier": "challenge",
+  "target_stratum": "constructed"
+}

@@ -1,0 +1,13 @@
+{
+  "program": {
+    "left": {
+      "index": 0,
+      "op": "input"
+    },
+    "op": "and",
+    "right": {
+      "index": 5,
+      "op": "input"
+    }
+  }
+}

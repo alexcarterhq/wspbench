@@ -1,0 +1,39 @@
+[
+  {
+    "output": {
+      "completion": "{\"patch\":[]}",
+      "input_context_tokens": 56054,
+      "model": "gpt-6-luna",
+      "time": 54.63726800000586,
+      "usage": {
+        "input_tokens": 3,
+        "input_tokens_cache_read": null,
+        "input_tokens_cache_write": 56051,
+        "output_tokens": 6477,
+        "reasoning_tokens": 6467,
+        "total_tokens": 62531
+      }
+    },
+    "tool": "model_turn",
+    "turn": 1,
+    "usage": {
+      "input_tokens": 3,
+      "input_tokens_cache_read": null,
+      "input_tokens_cache_write": 56051,
+      "output_tokens": 6477,
+      "reasoning_tokens": 6467,
+      "total_tokens": 62531
+    }
+  },
+  {
+    "observation_count": 0,
+    "submission": {
+      "patch": []
+    },
+    "tool": "commit"
+  },
+  {
+    "observation_count": 0,
+    "tool": "submit"
+  }
+]

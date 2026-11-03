@@ -1,0 +1,4344 @@
+{
+  "actor_id": "openai-sol",
+  "actor_name": "openai-sol",
+  "actor_type": "model",
+  "actual_observations": 0,
+  "artifact_hashes": {
+    "prompt.json": "b8978e1e75f529316790cf9d2975e7d2d31cfddd6e642d917d53c0e0727ef0b5",
+    "submission.json": "9f481e6c2b8fa51c14825b4444d34b63ef7f0ea1a342e68af61a5fbcbe465f07",
+    "trace.json": "8d17a1f675eb9ba8a5e6c3bb5c52d6884faf28827b193f9967f29eaff5b33874"
+  },
+  "attempt": 1,
+  "audit": {
+    "claim": "Access/counter checks do not prove absence of mental simulation or semantic forward emulation.",
+    "findings": [],
+    "note": "Original recorded trace independently reviewed before export. Public trace omits provider identifiers and encrypted reasoning; scoring, usage and access events are retained. Offline replay checks these public artifacts, not provider-side execution.",
+    "original_trace_sha256": "dfcb681e8be2f4c34a869279eac541315470bb7668679ea4074f776965061780",
+    "reviewer": "independent-gpt-transport-review",
+    "status": "approved",
+    "trace_sha256": "d14498c483e16971241f76f8cee00fcdb5d18155c0468b129b086da415bb7f3d"
+  },
+  "benchmark_version": "0.2.0",
+  "canonical_prompt_digest": "e9e1a4598dacf5ef84c89b89009162ba2d4ef09409aea0a90c5a549fd4f8e7c4",
+  "capacity_tier": "microcircuit_4049",
+  "condition": "A",
+  "cost_method": "Category-specific token estimate; reasoning included in output once",
+  "cost_usd": 0.2786935,
+  "counters": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "cpu_seconds": 1.821162000000001,
+  "family": "compositional_synthesis",
+  "harness_digest": "6b0a481c0774120952a4f0ad5ce2cd29f4d695703d6f8f04f8570a40b9936ed2",
+  "headline_eligible": false,
+  "hint_level": "neutral",
+  "id": "7ed976e0fce01a9f218b6edd3f02df3f151d3a91ed3ae9e8b6313d19eefc907a",
+  "mechanism_family_id": "compositional_synthesis:a1760c3fc1320582",
+  "metrics": {
+    "affected_accuracy": 0.8682926829268293,
+    "edit_fraction": 0.028896023709557916,
+    "edit_norm": 11.84271928232701,
+    "exhaustive_agreement": 0.9140625,
+    "false_positive_change_rate": 0.06571936056838366,
+    "parameters": 4049,
+    "retention_accuracy": 0.9342806394316163,
+    "retention_loss": 0.06571936056838368,
+    "target_accuracy": 0.9166666666666666
+  },
+  "model_config": {
+    "api_key_env": "OPENAI_API_KEY",
+    "generate_config": {
+      "reasoning_effort": "high",
+      "reasoning_summary": "none"
+    },
+    "id": "openai-sol",
+    "model": "openai/gpt-6.1-sol",
+    "model_args": {
+      "responses_api": true,
+      "service_tier": "default",
+      "streaming": true
+    },
+    "pricing": {
+      "cache_read_per_million": 0.1,
+      "cache_ttl": "30m_default",
+      "cache_write_per_million": 2.5,
+      "input_per_million": 2.0,
+      "output_per_million": 10.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "verified_at": "2026-11-03"
+    },
+    "provider": "openai",
+    "snapshot": "gpt-6.1-sol",
+    "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+    "verified_at": "2026-11-03"
+  },
+  "model_config_digest": "cd4dc350f75e27f5933947ec0d100564f6ef6781c70e3f661a53493a20a4c758",
+  "model_id": "openai-sol",
+  "observation_usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "parent_problem_id": "f41e6018bbedad2c",
+  "phase": "calibration",
+  "prompt_digest": "8bef910d3d335f0ba3aa4c3286df29dce81726e3f1d8de6a4f89556f8ec94dfd",
+  "prompt_information": {
+    "diagnosis_scope": "task_specification",
+    "hint_level": "neutral",
+    "history": [],
+    "optimization": "none",
+    "source": "benchmark_authored"
+  },
+  "protocol_digest": "e49e01dd756ab9e02ea172fd532cfa717bd0eab96fa47c84d8c468c1f4203c7b",
+  "provider": "openai",
+  "question_digest": "d33b91551d4fcc5c28a7ceea9acd23ef1c733187d4d659328d9c1caddb85eac2",
+  "schema_version": "2",
+  "score_reason": null,
+  "score_status": "scored",
+  "serialization_digest": "f36708aebdc4226b0c92a2971b87a5ddbabbc206c097ded937ed909d7bc8b38f",
+  "skill": "write",
+  "snapshot_actual_observations": {
+    "0": 0,
+    "128": 0,
+    "32": 0
+  },
+  "snapshot_unit": "example_evaluations",
+  "snapshots": {
+    "0": {
+      "patch": [
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            4,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            10,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            11,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            11,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -4
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            4
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            6
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            8
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            9
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            10
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            11
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1
+          ],
+          "op": "set",
+          "tensor": "bias",
+          "value": -0.5
+        }
+      ]
+    },
+    "128": {
+      "patch": [
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            4,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            10,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            11,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            11,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -4
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            4
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            6
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            8
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            9
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            10
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            11
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1
+          ],
+          "op": "set",
+          "tensor": "bias",
+          "value": -0.5
+        }
+      ]
+    },
+    "32": {
+      "patch": [
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            0,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            2
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            3,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            3
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            4,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            4
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            5,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            6,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            7
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            8,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            8
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            9
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            10,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            10
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -2
+        },
+        {
+          "index": [
+            11,
+            0
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            2
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            3
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": -1
+        },
+        {
+          "index": [
+            11,
+            4
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            5
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            6
+          ],
+          "op": "set",
+          "tensor": "w0",
+          "value": 1
+        },
+        {
+          "index": [
+            11
+          ],
+          "op": "set",
+          "tensor": "b0",
+          "value": -4
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w1",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w2",
+          "value": 1
+        },
+        {
+          "index": [
+            0,
+            0
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            5,
+            5
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            6,
+            6
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            7,
+            7
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            8,
+            8
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            9,
+            9
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            10,
+            10
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            11,
+            11
+          ],
+          "op": "set",
+          "tensor": "w3",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            4
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            5
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            6
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            7
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            8
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            9
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            10
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1,
+            11
+          ],
+          "op": "set",
+          "tensor": "out",
+          "value": 1
+        },
+        {
+          "index": [
+            1
+          ],
+          "op": "set",
+          "tensor": "bias",
+          "value": -0.5
+        }
+      ]
+    }
+  },
+  "source_artifact_hashes": {
+    "prompt.json": "1a5fc6af93eae9ed044cf38f9b3cd935088137e55a4af64d78258b0bd39cd4f9",
+    "submission.json": "e9300e9a48fdec285b162b74ca02e6b1430ef5468027c0d177357e7ec9123f65",
+    "trace.json": "b644dfb3cff4a959709e57f4dcdcc687668f3a79f524ed7a321049bb7c1e5100"
+  },
+  "source_result_sha256": "7327fdeef4e5e84a441b7c74dcda621393b5259cb852ae83b6374ab4e292dd2d",
+  "split": "dev",
+  "status": "completed",
+  "submission": {
+    "patch": [
+      {
+        "index": [
+          0,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          0,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          0,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          0,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          1,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          1,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          1,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          1,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          2,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          2,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          2,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          2,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          2,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          2
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -1
+      },
+      {
+        "index": [
+          3,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          3,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          3,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          3,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          3,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          3,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          3,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          3
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -2
+      },
+      {
+        "index": [
+          4,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          4,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          4,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          4,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          4
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -1
+      },
+      {
+        "index": [
+          5,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          5,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          5,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          5,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          6,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          6,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          6,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          6,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          7,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          7,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          7,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          7,
+          7
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          7
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -1
+      },
+      {
+        "index": [
+          8,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          8,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          8,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          8,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          8,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          8
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -1
+      },
+      {
+        "index": [
+          9,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          9,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          9,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          9
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -2
+      },
+      {
+        "index": [
+          10,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          10,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          10,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          10
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -2
+      },
+      {
+        "index": [
+          11,
+          0
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          2
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          3
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": -1
+      },
+      {
+        "index": [
+          11,
+          4
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          5
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          6
+        ],
+        "op": "set",
+        "tensor": "w0",
+        "value": 1
+      },
+      {
+        "index": [
+          11
+        ],
+        "op": "set",
+        "tensor": "b0",
+        "value": -4
+      },
+      {
+        "index": [
+          0,
+          0
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          1
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          2,
+          2
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          3,
+          3
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          4,
+          4
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          5,
+          5
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          6,
+          6
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          7,
+          7
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          8,
+          8
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          9
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          10
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          11
+        ],
+        "op": "set",
+        "tensor": "w1",
+        "value": 1
+      },
+      {
+        "index": [
+          0,
+          0
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          1
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          2,
+          2
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          3,
+          3
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          4,
+          4
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          5,
+          5
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          6,
+          6
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          7,
+          7
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          8,
+          8
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          9
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          10
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          11
+        ],
+        "op": "set",
+        "tensor": "w2",
+        "value": 1
+      },
+      {
+        "index": [
+          0,
+          0
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          1
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          2,
+          2
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          3,
+          3
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          4,
+          4
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          5,
+          5
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          6,
+          6
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          7,
+          7
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          8,
+          8
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          9,
+          9
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          10,
+          10
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          11,
+          11
+        ],
+        "op": "set",
+        "tensor": "w3",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          0
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          1
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          2
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          3
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          4
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          5
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          6
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          7
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          8
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          9
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          10
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1,
+          11
+        ],
+        "op": "set",
+        "tensor": "out",
+        "value": 1
+      },
+      {
+        "index": [
+          1
+        ],
+        "op": "set",
+        "tensor": "bias",
+        "value": -0.5
+      }
+    ]
+  },
+  "submitted": true,
+  "success": false,
+  "suite_digest": "944ab7656cb18ccd7a44560ff9b2a9f75d48fcb3464a2049ec4dbde6ad30b8fc",
+  "suite_tier": "challenge_candidate",
+  "target_digest": "1fb71e5b5fae0c688202721dd28cd491f565592b9a933641a332bf3494cc1234",
+  "target_stratum": "constructed_microcircuit",
+  "task_id": "0ccf05ea24942ed4",
+  "turns": 1,
+  "usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "input_tokens": 3,
+    "input_tokens_cache_read": 0,
+    "input_tokens_cache_write": 56051,
+    "input_tokens_total": 56054,
+    "output_tokens": 13856,
+    "reasoning_tokens": 11608,
+    "steps": 0,
+    "total_tokens": 69910
+  },
+  "wall_seconds": 167.21862795800553,
+  "weight_view": "full"
+}

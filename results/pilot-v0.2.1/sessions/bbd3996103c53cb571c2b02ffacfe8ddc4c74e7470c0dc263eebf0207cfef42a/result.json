@@ -1,0 +1,550 @@
+{
+  "actor_id": "openai-sol",
+  "actor_name": "openai-sol",
+  "actor_type": "model",
+  "actual_observations": 0,
+  "artifact_hashes": {
+    "prompt.json": "623152f8b126921954152db4f55f1643fa693a63c4f6c3fca7d49f02d02fa028",
+    "submission.json": "f6f20dc03d3deadb32e98ca7f782fc7d22d8c58377150d6806cf2c5f2b469a06",
+    "trace.json": "7cfd75b302a19dfee859385ff7090b8683885f57fc7224b2f9a8a904e887672d"
+  },
+  "attempt": 1,
+  "audit": {
+    "claim": "Access/counter checks do not prove absence of mental simulation or semantic forward emulation.",
+    "findings": [],
+    "note": "Original recorded trace independently reviewed before export. Public trace omits provider identifiers and encrypted reasoning; scoring, usage and access events are retained. Offline replay checks these public artifacts, not provider-side execution.",
+    "original_trace_sha256": "d4c3a7d3f8361ac12f40c1f4d775564222916d7d6588d3ec7e0d6b9edc37a251",
+    "reviewer": "independent-gpt-transport-review",
+    "status": "approved",
+    "trace_sha256": "30a55f5d9d3786177acec54c0a1d79265b4260e58d5cd69572a8ffd604cfc737"
+  },
+  "benchmark_version": "0.2.0",
+  "canonical_prompt_digest": "3b056e892248a318dfed749aa39045cb1cbb291c542f36ec3ad1085a64c58716",
+  "capacity_tier": "microcircuit_4049",
+  "condition": "A",
+  "cost_method": "Category-specific token estimate; reasoning included in output once",
+  "cost_usd": 0.2644485,
+  "counters": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "cpu_seconds": 0.5337020000000017,
+  "family": "edit_effects",
+  "harness_digest": "6b0a481c0774120952a4f0ad5ce2cd29f4d695703d6f8f04f8570a40b9936ed2",
+  "headline_eligible": false,
+  "hint_level": "neutral",
+  "id": "bbd3996103c53cb571c2b02ffacfe8ddc4c74e7470c0dc263eebf0207cfef42a",
+  "mechanism_family_id": "edit_effects:420908e6323bcec1",
+  "metrics": {
+    "affected_precision": 1.0,
+    "affected_recall": 1.0,
+    "after_agreement": 0.82421875,
+    "before_agreement": 0.82421875,
+    "consequence_agreement": 1.0,
+    "exhaustive_agreement": 0.8125,
+    "false_positive_rate": 0.0
+  },
+  "model_config": {
+    "api_key_env": "OPENAI_API_KEY",
+    "generate_config": {
+      "reasoning_effort": "high",
+      "reasoning_summary": "none"
+    },
+    "id": "openai-sol",
+    "model": "openai/gpt-6.1-sol",
+    "model_args": {
+      "responses_api": true,
+      "service_tier": "default",
+      "streaming": true
+    },
+    "pricing": {
+      "cache_read_per_million": 0.1,
+      "cache_ttl": "30m_default",
+      "cache_write_per_million": 2.5,
+      "input_per_million": 2.0,
+      "output_per_million": 10.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "verified_at": "2026-11-03"
+    },
+    "provider": "openai",
+    "snapshot": "gpt-6.1-sol",
+    "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+    "verified_at": "2026-11-03"
+  },
+  "model_config_digest": "cd4dc350f75e27f5933947ec0d100564f6ef6781c70e3f661a53493a20a4c758",
+  "model_id": "openai-sol",
+  "observation_usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "parent_problem_id": "50c9365576c5afb6",
+  "phase": "calibration",
+  "prompt_digest": "555c0b7a0ad502faef8edf1880b41d32f573231d5e57295b91518ddfab4a82e7",
+  "prompt_information": {
+    "diagnosis_scope": "task_specification",
+    "hint_level": "neutral",
+    "history": [],
+    "optimization": "none",
+    "source": "benchmark_authored"
+  },
+  "protocol_digest": "e49e01dd756ab9e02ea172fd532cfa717bd0eab96fa47c84d8c468c1f4203c7b",
+  "provider": "openai",
+  "question_digest": "64fcbd9d63129c0d9e69ce38f6499e004fb7ae9f08ddc8ce4e54c91861a09e3e",
+  "schema_version": "2",
+  "score_reason": null,
+  "score_status": "scored",
+  "serialization_digest": "f0d7b122bc243da5093fd46b35d6c35d944b3840840752204b3dbcd7cacea4ba",
+  "skill": "read",
+  "snapshot_actual_observations": {
+    "0": 0,
+    "128": 0,
+    "32": 0
+  },
+  "snapshot_unit": "example_evaluations",
+  "snapshots": {
+    "0": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      }
+    },
+    "128": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      }
+    },
+    "32": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 3,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 4,
+              "op": "input"
+            }
+          },
+          "op": "nor",
+          "right": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 8,
+              "op": "input"
+            }
+          }
+        },
+        "op": "xor",
+        "right": {
+          "left": {
+            "arg": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "not"
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "nor",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          }
+        }
+      }
+    }
+  },
+  "source_artifact_hashes": {
+    "prompt.json": "18b03150a090a75d5ad1265d206257dc8612d658f291f0eb3989f361d0c23885",
+    "submission.json": "be98486f7fee49c6dd679b39fc3b8a5c38ec8b2009ce5a340dd8399b0a021094",
+    "trace.json": "ddc2be5e41dbe55fd4828215cb08828ebbfa11103f2baf8e2a75f67517b6a9b5"
+  },
+  "source_result_sha256": "3f6449735a00ef3039001d636ca60c065f7ae414d9d3863b376ffe863d96cf7f",
+  "split": "dev",
+  "status": "completed",
+  "submission": {
+    "after_program": {
+      "left": {
+        "left": {
+          "left": {
+            "index": 3,
+            "op": "input"
+          },
+          "op": "nor",
+          "right": {
+            "index": 4,
+            "op": "input"
+          }
+        },
+        "op": "nor",
+        "right": {
+          "left": {
+            "index": 0,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 8,
+            "op": "input"
+          }
+        }
+      },
+      "op": "xor",
+      "right": {
+        "left": {
+          "arg": {
+            "index": 8,
+            "op": "input"
+          },
+          "op": "not"
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 4,
+            "op": "input"
+          },
+          "op": "nor",
+          "right": {
+            "index": 5,
+            "op": "input"
+          }
+        }
+      }
+    },
+    "before_program": {
+      "left": {
+        "left": {
+          "left": {
+            "index": 3,
+            "op": "input"
+          },
+          "op": "nor",
+          "right": {
+            "index": 4,
+            "op": "input"
+          }
+        },
+        "op": "nor",
+        "right": {
+          "left": {
+            "index": 0,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 8,
+            "op": "input"
+          }
+        }
+      },
+      "op": "xor",
+      "right": {
+        "left": {
+          "arg": {
+            "index": 8,
+            "op": "input"
+          },
+          "op": "not"
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 4,
+            "op": "input"
+          },
+          "op": "nor",
+          "right": {
+            "index": 5,
+            "op": "input"
+          }
+        }
+      }
+    }
+  },
+  "submitted": true,
+  "success": false,
+  "suite_digest": "944ab7656cb18ccd7a44560ff9b2a9f75d48fcb3464a2049ec4dbde6ad30b8fc",
+  "suite_tier": "challenge_candidate",
+  "target_digest": "67d942f63013741ee64d7aba547cfdbbf9b3fdf9598f355feb90c53c3c4748b8",
+  "target_stratum": "constructed_microcircuit",
+  "task_id": "2b12b0f4688c3852",
+  "turns": 1,
+  "usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "input_tokens": 3,
+    "input_tokens_cache_read": 0,
+    "input_tokens_cache_write": 66029,
+    "input_tokens_total": 66032,
+    "output_tokens": 9937,
+    "reasoning_tokens": 9694,
+    "steps": 0,
+    "total_tokens": 75969
+  },
+  "wall_seconds": 133.74822824999865,
+  "weight_view": "full"
+}

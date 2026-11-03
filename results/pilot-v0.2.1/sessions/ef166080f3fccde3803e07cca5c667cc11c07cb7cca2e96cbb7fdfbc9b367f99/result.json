@@ -1,0 +1,694 @@
+{
+  "actor_id": "openai-luna",
+  "actor_name": "openai-luna",
+  "actor_type": "model",
+  "actual_observations": 0,
+  "artifact_hashes": {
+    "prompt.json": "623152f8b126921954152db4f55f1643fa693a63c4f6c3fca7d49f02d02fa028",
+    "submission.json": "85070217663431c8da6a164e1ae5912bb261b514e5ffbc161f6b80db50a316e8",
+    "trace.json": "4dc4631e6d498a60f0f0d437c61ae8e5a35acc5df2808915ff6a254d51203767"
+  },
+  "attempt": 1,
+  "audit": {
+    "claim": "Access/counter checks do not prove absence of mental simulation or semantic forward emulation.",
+    "findings": [],
+    "note": "Original recorded trace independently reviewed before export. Public trace omits provider identifiers and encrypted reasoning; scoring, usage and access events are retained. Offline replay checks these public artifacts, not provider-side execution.",
+    "original_trace_sha256": "4e21f329a9fc01274d2f394163df0fe1b5ce1dc437ecd329f133c64eb15deb45",
+    "reviewer": "independent-gpt-transport-review",
+    "status": "approved",
+    "trace_sha256": "1a7481f637b71973a4c086aa2d2871c3aa20ca99eb3c0578f2a23174c9dc3af6"
+  },
+  "benchmark_version": "0.2.0",
+  "canonical_prompt_digest": "3b056e892248a318dfed749aa39045cb1cbb291c542f36ec3ad1085a64c58716",
+  "capacity_tier": "microcircuit_4049",
+  "condition": "A",
+  "cost_method": "Category-specific token estimate; reasoning included in output once",
+  "cost_usd": 0.016485424999999998,
+  "counters": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "cpu_seconds": 0.45056599999999847,
+  "family": "edit_effects",
+  "harness_digest": "6b0a481c0774120952a4f0ad5ce2cd29f4d695703d6f8f04f8570a40b9936ed2",
+  "headline_eligible": false,
+  "hint_level": "neutral",
+  "id": "ef166080f3fccde3803e07cca5c667cc11c07cb7cca2e96cbb7fdfbc9b367f99",
+  "mechanism_family_id": "edit_effects:420908e6323bcec1",
+  "metrics": {
+    "affected_precision": 1.0,
+    "affected_recall": 1.0,
+    "after_agreement": 0.4036458333333333,
+    "before_agreement": 0.4036458333333333,
+    "consequence_agreement": 1.0,
+    "exhaustive_agreement": 0.4052734375,
+    "false_positive_rate": 0.0
+  },
+  "model_config": {
+    "api_key_env": "OPENAI_API_KEY",
+    "generate_config": {
+      "reasoning_effort": "high",
+      "reasoning_summary": "none"
+    },
+    "id": "openai-luna",
+    "model": "openai/gpt-6-luna",
+    "model_args": {
+      "responses_api": true,
+      "service_tier": "default",
+      "streaming": true
+    },
+    "pricing": {
+      "cache_read_per_million": 0.01,
+      "cache_ttl": "30m_default",
+      "cache_write_per_million": 0.125,
+      "input_per_million": 0.1,
+      "output_per_million": 0.5,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "verified_at": "2026-11-03"
+    },
+    "provider": "openai",
+    "snapshot": "gpt-6-luna",
+    "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+    "verified_at": "2026-11-03"
+  },
+  "model_config_digest": "a83c85223298b6621af3350a1a3a2b24072ae6e7496308ae3be8ef923d1fcc20",
+  "model_id": "openai-luna",
+  "observation_usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "steps": 0
+  },
+  "parent_problem_id": "50c9365576c5afb6",
+  "phase": "calibration",
+  "prompt_digest": "555c0b7a0ad502faef8edf1880b41d32f573231d5e57295b91518ddfab4a82e7",
+  "prompt_information": {
+    "diagnosis_scope": "task_specification",
+    "hint_level": "neutral",
+    "history": [],
+    "optimization": "none",
+    "source": "benchmark_authored"
+  },
+  "protocol_digest": "e49e01dd756ab9e02ea172fd532cfa717bd0eab96fa47c84d8c468c1f4203c7b",
+  "provider": "openai",
+  "question_digest": "64fcbd9d63129c0d9e69ce38f6499e004fb7ae9f08ddc8ce4e54c91861a09e3e",
+  "schema_version": "2",
+  "score_reason": null,
+  "score_status": "scored",
+  "serialization_digest": "f0d7b122bc243da5093fd46b35d6c35d944b3840840752204b3dbcd7cacea4ba",
+  "skill": "read",
+  "snapshot_actual_observations": {
+    "0": 0,
+    "128": 0,
+    "32": 0
+  },
+  "snapshot_unit": "example_evaluations",
+  "snapshots": {
+    "0": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      }
+    },
+    "128": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      }
+    },
+    "32": {
+      "after_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      },
+      "before_program": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 0,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 1,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 2,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 3,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 4,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 5,
+                "op": "input"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 6,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "index": 7,
+                "op": "input"
+              }
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 8,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 9,
+              "op": "input"
+            }
+          }
+        }
+      }
+    }
+  },
+  "source_artifact_hashes": {
+    "prompt.json": "18b03150a090a75d5ad1265d206257dc8612d658f291f0eb3989f361d0c23885",
+    "submission.json": "c69dbf216cf94b66cb21fc06fa45f457ac215743ebae6c7fec1933cecc9f3476",
+    "trace.json": "edb5bc9ee42bffbe1e1abfc97d23c9e11dd8f9af024a0ecad5da0efee865654f"
+  },
+  "source_result_sha256": "006a905d88373d2c6b8044c346417b3806e00051eb8afc977dcbd8c0032f7e4c",
+  "split": "dev",
+  "status": "completed",
+  "submission": {
+    "after_program": {
+      "left": {
+        "left": {
+          "left": {
+            "index": 0,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 1,
+            "op": "input"
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 2,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 3,
+            "op": "input"
+          }
+        }
+      },
+      "op": "and",
+      "right": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 6,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 7,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 8,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 9,
+            "op": "input"
+          }
+        }
+      }
+    },
+    "before_program": {
+      "left": {
+        "left": {
+          "left": {
+            "index": 0,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 1,
+            "op": "input"
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 2,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 3,
+            "op": "input"
+          }
+        }
+      },
+      "op": "and",
+      "right": {
+        "left": {
+          "left": {
+            "left": {
+              "index": 4,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 5,
+              "op": "input"
+            }
+          },
+          "op": "and",
+          "right": {
+            "left": {
+              "index": 6,
+              "op": "input"
+            },
+            "op": "and",
+            "right": {
+              "index": 7,
+              "op": "input"
+            }
+          }
+        },
+        "op": "and",
+        "right": {
+          "left": {
+            "index": 8,
+            "op": "input"
+          },
+          "op": "and",
+          "right": {
+            "index": 9,
+            "op": "input"
+          }
+        }
+      }
+    }
+  },
+  "submitted": true,
+  "success": false,
+  "suite_digest": "944ab7656cb18ccd7a44560ff9b2a9f75d48fcb3464a2049ec4dbde6ad30b8fc",
+  "suite_tier": "challenge_candidate",
+  "target_digest": "67d942f63013741ee64d7aba547cfdbbf9b3fdf9598f355feb90c53c3c4748b8",
+  "target_stratum": "constructed_microcircuit",
+  "task_id": "2b12b0f4688c3852",
+  "turns": 1,
+  "usage": {
+    "activation_scalars": 0,
+    "analysis_calls": 0,
+    "candidate_patches": 0,
+    "episodes": 0,
+    "example_evaluations": 0,
+    "generated_tokens": 0,
+    "input_tokens": 3,
+    "input_tokens_cache_read": 0,
+    "input_tokens_cache_write": 66029,
+    "input_tokens_total": 66032,
+    "output_tokens": 16463,
+    "reasoning_tokens": 16134,
+    "steps": 0,
+    "total_tokens": 82495
+  },
+  "wall_seconds": 124.0851762079983,
+  "weight_view": "full"
+}

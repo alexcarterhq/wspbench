@@ -1,0 +1,111 @@
+[
+  {
+    "output": {
+      "completion": "{\"program\":{\"op\":\"not\",\"arg\":{\"op\":\"xor\",\"left\":{\"op\":\"and\",\"left\":{\"op\":\"nor\",\"left\":{\"op\":\"input\",\"index\":1},\"right\":{\"op\":\"or\",\"left\":{\"op\":\"input\",\"index\":3},\"right\":{\"op\":\"input\",\"index\":9}}},\"right\":{\"op\":\"not\",\"arg\":{\"op\":\"xor\",\"left\":{\"op\":\"input\",\"index\":0},\"right\":{\"op\":\"input\",\"index\":7}}}},\"right\":{\"op\":\"and\",\"left\":{\"op\":\"and\",\"left\":{\"op\":\"input\",\"index\":0},\"right\":{\"op\":\"nor\",\"left\":{\"op\":\"input\",\"index\":2},\"right\":{\"op\":\"input\",\"index\":8}}},\"right\":{\"op\":\"nand\",\"left\":{\"op\":\"input\",\"index\":5},\"right\":{\"op\":\"input\",\"index\":6}}}}}}",
+      "input_context_tokens": 33382,
+      "model": "gpt-6.1-terra",
+      "time": 170.5842217499885,
+      "usage": {
+        "input_tokens": 3,
+        "input_tokens_cache_read": null,
+        "input_tokens_cache_write": 33379,
+        "output_tokens": 15330,
+        "reasoning_tokens": 15151,
+        "total_tokens": 48712
+      }
+    },
+    "tool": "model_turn",
+    "turn": 1,
+    "usage": {
+      "input_tokens": 3,
+      "input_tokens_cache_read": null,
+      "input_tokens_cache_write": 33379,
+      "output_tokens": 15330,
+      "reasoning_tokens": 15151,
+      "total_tokens": 48712
+    }
+  },
+  {
+    "observation_count": 0,
+    "submission": {
+      "program": {
+        "arg": {
+          "left": {
+            "left": {
+              "left": {
+                "index": 1,
+                "op": "input"
+              },
+              "op": "nor",
+              "right": {
+                "left": {
+                  "index": 3,
+                  "op": "input"
+                },
+                "op": "or",
+                "right": {
+                  "index": 9,
+                  "op": "input"
+                }
+              }
+            },
+            "op": "and",
+            "right": {
+              "arg": {
+                "left": {
+                  "index": 0,
+                  "op": "input"
+                },
+                "op": "xor",
+                "right": {
+                  "index": 7,
+                  "op": "input"
+                }
+              },
+              "op": "not"
+            }
+          },
+          "op": "xor",
+          "right": {
+            "left": {
+              "left": {
+                "index": 0,
+                "op": "input"
+              },
+              "op": "and",
+              "right": {
+                "left": {
+                  "index": 2,
+                  "op": "input"
+                },
+                "op": "nor",
+                "right": {
+                  "index": 8,
+                  "op": "input"
+                }
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "index": 5,
+                "op": "input"
+              },
+              "op": "nand",
+              "right": {
+                "index": 6,
+                "op": "input"
+              }
+            }
+          }
+        },
+        "op": "not"
+      }
+    },
+    "tool": "commit"
+  },
+  {
+    "observation_count": 0,
+    "tool": "submit"
+  }
+]

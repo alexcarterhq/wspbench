@@ -1,0 +1,18 @@
+SPDX-License-Identifier: CC-BY-4.0
+
+Original WSPBench benchmark data, development fixtures, reference answers and
+original result annotations are licensed under the Creative Commons Attribution
+4.0 International Public License (CC BY 4.0).
+
+Copyright 2026 WSPBench contributors.
+
+License summary: https://creativecommons.org/licenses/by/4.0/
+Controlling legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+You may share and adapt this material under that license. Give appropriate
+credit to WSPBench contributors, identify the dataset revision and source used,
+link to the license, and indicate changes. Attribution must not imply endorsement.
+
+Source code is separately licensed under Apache-2.0 in LICENSE. Third-party
+materials retain their applicable licenses and terms; this notice does not
+relicense them. See NOTICE and per-artifact provenance for attribution.

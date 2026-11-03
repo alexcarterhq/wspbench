@@ -1,0 +1,32 @@
+name: Task or baseline proposal
+description: Propose a bounded research contribution before building a new family.
+labels: [proposal]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question and proposed contribution
+      description: Explain the behavior being measured and why existing tasks or baselines do not cover it.
+    validations:
+      required: true
+  - type: textarea
+    id: access
+    attributes:
+      label: Access conditions, information, and resource limits
+      description: Specify A, B, or C; what is disclosed; and which feedback or computation is allowed.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Reference, controls, and scoring
+      description: Describe the feasible reference, no-op/random controls, strong conventional baseline, preservation checks, malformed inputs, and independent task unit.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance and expected artifact
+      description: Describe constructed or trained targets, data rights, split independence, reproducible CPU checks, expected effort, and proposed contributor credit. Do not include active hidden tasks or seeds.
+    validations:
+      required: true
