@@ -70,3 +70,25 @@ python experiments/run_selective_repair.py --suite hard-budget-check --seed 8241
 python experiments/run_selective_repair.py --suite hard-budget-check --seed 82417 --output .wspbench-runs/selective-repair-hard-check-01 --execute
 python experiments/report_selective_repair.py .wspbench-runs/selective-repair-hard-check-01
 ```
+
+### Full Sol experiment
+
+The full suite runs the main matched comparison on eight new seed blocks.
+Each block contains four faults and one clean control. GPT-6.1 Sol runs
+each case twice, with the same probe budget in both sessions. One session
+also receives the weights. The scripted baseline runs once per case.
+The suite excludes the calibration seed and uses a fixed decoy. The
+commands below generate fresh cases from an example seed. The published
+report shares aggregate results; the original cases and traces are private.
+
+```sh
+uv run python experiments/run_selective_repair.py --suite sol-full --seed 123456 --output .wspbench-runs/selective-repair-sol-full-01
+uv run python experiments/run_selective_repair.py --suite sol-full --seed 123456 --output .wspbench-runs/selective-repair-sol-full-01 --execute
+uv run python experiments/report_sol_full.py .wspbench-runs/selective-repair-sol-full-01
+```
+
+The first command freezes the cases and runs the scripted baseline. The
+second runs the 80 API sessions with a 24,000-token output limit in each
+arm. At the recorded rates, the maximum reservation is $28.80. The report
+estimates the paired repair difference on fault cases and resamples seed
+blocks for the uncertainty interval. It lists clean controls separately.
