@@ -7,20 +7,29 @@ import math
 from pathlib import Path
 from statistics import mean
 
-from report_selective_repair import SCORED, ZERO_CREDIT, forecast_error, load_results, success
+from report_selective_repair import SCORED, ZERO_CREDIT, cell_key, forecast_error, load_results, success
 from report_sol_full import bootstrap_interval, exhausted_output
 from wspbench.budget import session_cost
+from wspbench.v2.serialization import serialization_digest
 
 
 ACCESS = ("behavior", "weights_behavior")
 SCRIPTED = "scripted"
 PROTOCOL_FIELDS = ("cases", "system", "arms", "limits", "primary_metric")
+RETRYABLE_ERRORS = {"APIError", "APITimeoutError"}
 
 
-def load_comparison(roots):
+def load_comparison(roots, retry_root=None):
     reference = None
     models = {}
     results = {}
+    retry_candidates = {}
+    retries = {}
+    retry_manifest = None
+    retry_plan = None
+    if retry_root is not None:
+        retry_manifest, _, retries = load_results(retry_root)
+        retry_plan = json.loads((retry_root / "retry-plan.json").read_text())
     for root in roots:
         manifest, planned, rows = load_results(root)
         if reference is None:
@@ -52,13 +61,49 @@ def load_comparison(roots):
                 raise ValueError(f"Scripted baseline changed on {key[1]}")
             results[key] = row
 
+        if retry_root is not None and manifest == retry_manifest:
+            retry_candidates = {
+                key: row for key, row in rows.items()
+                if key[0] != SCRIPTED and row["status"] == "infrastructure_failure"
+                and row.get("error") in RETRYABLE_ERRORS
+            }
+
+    if retry_root is not None:
+        if not retry_candidates:
+            raise ValueError("Retry manifest must match an original run with API failures")
+        if set(retries) - retry_candidates.keys():
+            raise ValueError("Retry records must belong to original API failures")
+        manifest_digest = serialization_digest(retry_manifest)
+        planned_retries = [cell_key(cell) for cell in retry_plan["cells"]]
+        if (retry_plan["original_manifest_digest"] != manifest_digest
+                or len(planned_retries) != len(retry_candidates)
+                or set(planned_retries) != retry_candidates.keys()):
+            raise ValueError("Retry plan must match the exact set of original API failures")
+        concurrency = retry_plan["concurrency"]
+        if type(concurrency) is not int or concurrency < 1:
+            raise ValueError("Retry plan must record positive concurrency")
+        for key, row in retries.items():
+            original = retry_candidates[key]
+            if row.get("prompt_digest") != original["prompt_digest"]:
+                raise ValueError(f"Retry prompt differs for {key!r}")
+            if row.get("retry_of") != original["reservation_id"]:
+                raise ValueError(f"Retry lineage differs for {key!r}")
+            cell = dict(zip(("model", "case", "arm"), key, strict=True))
+            digest = serialization_digest([manifest_digest, cell])
+            reservation = serialization_digest(["api-error-retry-1", digest])
+            if row.get("reservation_id") != reservation:
+                raise ValueError(f"Unexpected retry reservation for {key!r}")
+            path = retry_root / "runs" / digest / "result.json"
+            if not path.is_file():
+                raise ValueError(f"Retry record path differs from the original cell hash for {key!r}")
+
     prompt_digests = defaultdict(set)
     for (model, case_id, access), row in results.items():
         if model != SCRIPTED:
             prompt_digests[case_id, access].add(row["prompt_digest"])
     if any(len(digests) > 1 for digests in prompt_digests.values()):
         raise ValueError("Initial model prompts differ within an access condition")
-    return reference, models, results
+    return reference, models, results, retries, retry_plan
 
 
 def repair_count(rows):
@@ -67,17 +112,32 @@ def repair_count(rows):
     return {"passed": int(sum(scored)), "scored": len(scored), "planned": len(scores)}
 
 
-def summarize_arm(results, cases, model, access, output_limit, config=None):
-    rows = [results.get((model, case["id"], access)) for case in cases]
+def metered_cost(records, config):
+    costs = []
+    unknown = 0
+    for row in records:
+        value = row.get("cost_usd")
+        if value is None:
+            unknown += 1
+            if not row.get("responses"):
+                continue
+            value = session_cost(config, row["usage"])
+        if not math.isfinite(value) or value < 0:
+            raise ValueError(f"Invalid API cost for {config['snapshot']}")
+        costs.append(value)
+    return sum(costs), unknown
+
+
+def summarize_arm(results, cases, model, access, output_limit, config=None,
+                  *, originals=None, retries=None):
+    keys = [(model, case["id"], access) for case in cases]
+    rows = [results.get(key) for key in keys]
     recorded = [row for row in rows if row is not None]
-    costs = [row["cost_usd"] for row in recorded if row.get("cost_usd") is not None]
-    partial_costs = [
-        session_cost(config, row["usage"])
-        for row in recorded
-        if config is not None and row.get("cost_usd") is None and row.get("responses")
-    ]
-    if any(not math.isfinite(cost) or cost < 0 for cost in costs):
-        raise ValueError(f"Invalid API cost for {model}")
+    initial_cost, initial_unknown = (0.0, 0)
+    retry_cost, retry_unknown = (0.0, 0)
+    if config is not None:
+        initial_cost, initial_unknown = metered_cost((originals[key] for key in keys if key in originals), config)
+        retry_cost, retry_unknown = metered_cost((retries[key] for key in keys if key in retries), config)
     return {
         "faults": repair_count(row for row, case in zip(rows, cases, strict=True) if not case["clean"]),
         "clean": repair_count(row for row, case in zip(rows, cases, strict=True) if case["clean"]),
@@ -86,8 +146,10 @@ def summarize_arm(results, cases, model, access, output_limit, config=None):
         "invalid": sum(row["status"] in ZERO_CREDIT for row in recorded),
         "infrastructure_failures": sum(row["status"] not in SCORED | ZERO_CREDIT for row in recorded),
         "output_caps": sum(exhausted_output(row, output_limit) for row in recorded),
-        "cost_usd": sum(costs) + sum(partial_costs) if model != SCRIPTED else None,
-        "unknown_costs": len(recorded) - len(costs) if model != SCRIPTED else 0,
+        "cost_usd": initial_cost + retry_cost if model != SCRIPTED else None,
+        "unknown_costs": initial_unknown + retry_unknown,
+        "retry_cost_usd": retry_cost,
+        "retry_unknown_costs": retry_unknown,
     }
 
 
@@ -120,8 +182,9 @@ def paired_effect(results, cases, model):
     }
 
 
-def summarize(roots):
-    manifest, models, results = load_comparison(roots)
+def summarize(roots, retry_root=None):
+    manifest, models, originals, retries, retry_plan = load_comparison(roots, retry_root)
+    results = originals | retries
     cases = manifest["cases"]
     faults = [case for case in cases if not case["clean"]]
     limits = manifest["limits"]
@@ -131,9 +194,14 @@ def summarize(roots):
     baseline = summarize_arm(results, cases, SCRIPTED, "behavior", output_limit)
     models_summary = []
     for model, config in models.items():
-        arms = {arm: summarize_arm(results, cases, model, arm, output_limit, config) for arm in ACCESS}
+        arms = {
+            arm: summarize_arm(results, cases, model, arm, output_limit, config,
+                               originals=originals, retries=retries)
+            for arm in ACCESS
+        }
         served = sorted({response["model"]
-                         for key, row in results.items() if key[0] == model
+                         for batch in (originals, retries)
+                         for key, row in batch.items() if key[0] == model
                          for response in row.get("responses", [])})
         models_summary.append({
             "model": model,
@@ -157,6 +225,14 @@ def summarize(roots):
         "planned": len(models) * len(cases) * len(ACCESS),
         "cost_usd": sum(arm["cost_usd"] for arm in arms),
         "unknown_costs": sum(arm["unknown_costs"] for arm in arms),
+        "retry": {
+            "planned": len(retry_plan["cells"]),
+            "recorded": len(retries),
+            "resolved": sum(row["status"] in SCORED | ZERO_CREDIT for row in retries.values()),
+            "cost_usd": sum(arm["retry_cost_usd"] for arm in arms),
+            "unknown_costs": sum(arm["retry_unknown_costs"] for arm in arms),
+            "concurrency": retry_plan["concurrency"],
+        } if retry_root is not None else None,
         "models": models_summary,
         "baseline": baseline,
     }
@@ -175,11 +251,22 @@ def interval(values):
 
 
 def dollars(value, unknown=0):
-    return f"${value:.4f}" + (f" ({unknown} sessions with incomplete usage)" if unknown else "")
+    return f"${value:.4f}" + (f" ({unknown} attempts with incomplete usage)" if unknown else "")
 
 
 def render(summary):
     limits = summary["limits"]
+    retry = summary["retry"]
+    retry_note = ""
+    if retry is not None:
+        retry_note = (
+            f"\n\nWe retried only sessions interrupted by API errors, reducing concurrency "
+            f"from 16 to {retry['concurrency']}. "
+            f"{retry['recorded']}/{retry['planned']} retries returned records and "
+            f"{retry['resolved']} resolved the original API interruption. The comparison uses "
+            "the retry outcome for those sessions and keeps both attempts in the cost totals. "
+            f"Metered retry cost was {dollars(retry['cost_usd'], retry['unknown_costs'])}."
+        )
     lines = [
         "# Full selective repair model comparison",
         "",
@@ -190,8 +277,8 @@ def render(summary):
         f"and {limits['post_probes']} post-commit probes per session.",
         "",
         "The comparison reuses the original Sol run. Astra, Luna, and Terra ran in a separate "
-        "interleaved batch, with one attempt per case and condition. All four ran at high reasoning "
-        "effort using the listed API aliases.",
+        "interleaved batch, initially with one attempt per case and condition. All four ran at high reasoning "
+        f"effort using the listed API aliases.{retry_note}",
         "",
         f"Recorded {summary['recorded']}/{summary['planned']} planned API sessions. "
         f"Estimated cost from recorded usage was {dollars(summary['cost_usd'], summary['unknown_costs'])}.",
@@ -217,7 +304,7 @@ def render(summary):
         "",
         "Invalid submissions and protocol violations count as failures. Pending sessions and infrastructure "
         "failures are excluded from score denominators. Costs include metered turns from interrupted "
-        "sessions. Unknown costs refer to sessions with incomplete API usage records.",
+        "attempts. Incomplete usage records leave some charges unknown.",
         "",
         "| API model | Matched fault pairs | Repairs gained / lost / tied | Change with weights | 95% interval | Forecast MAE change (pairs) | Model API cost |",
         "|---|---:|---:|---:|---:|---:|---:|",
@@ -263,7 +350,8 @@ def render(summary):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("roots", nargs="+", type=Path, help="Private full experiment directories")
+    parser.add_argument("--retry", type=Path, help="Private directory with retries of interrupted API sessions")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable aggregate metrics")
     args = parser.parse_args()
-    summary = summarize(args.roots)
+    summary = summarize(args.roots, args.retry)
     print(json.dumps(summary, indent=2) if args.json else render(summary))

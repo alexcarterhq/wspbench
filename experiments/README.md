@@ -108,3 +108,18 @@ uv run python experiments/report_full_comparison.py .wspbench-runs/selective-rep
 The comparison adds 240 API sessions, with a maximum reservation of
 $159.84 at the recorded rates. See the
 [full comparison](../reports/selective-repair-gpt-full/README.md).
+
+To retry recorded API stream errors and timeouts, point the retry runner
+at the original GPT comparison and a separate output directory. It
+freezes the same cases and settings, keeps the original results, and
+runs at most four sessions at a time.
+
+```sh
+uv run python experiments/retry_selective_repair.py .wspbench-runs/selective-repair-gpt-full-01 .wspbench-runs/selective-repair-gpt-full-retry-01
+uv run python experiments/retry_selective_repair.py .wspbench-runs/selective-repair-gpt-full-01 .wspbench-runs/selective-repair-gpt-full-retry-01 --execute
+uv run python experiments/report_full_comparison.py .wspbench-runs/selective-repair-sol-full-01 .wspbench-runs/selective-repair-gpt-full-01 --retry .wspbench-runs/selective-repair-gpt-full-retry-01
+```
+
+Only the retry supplies the score for an interrupted cell. The report
+includes metered usage from both attempts and marks sessions for which
+the API did not return complete usage.
