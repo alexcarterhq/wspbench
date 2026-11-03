@@ -2,13 +2,15 @@
 
 WSPBench tests whether access to neural network weights helps an agent diagnose and repair a model. The agent forecasts the effects of candidate edits before it tests a patch. The scorer checks whether the patch fixes the target failure and preserves previously correct behavior on hidden examples.
 
-[Run the benchmark](experiments/README.md#diagnosis-and-selective-repair) · [Full Sol results](reports/selective-repair-sol-full/README.md) · [Calibration results](reports/selective-repair-hard/README.md) · [Website](https://wspbench.com)
+[Run the benchmark](experiments/README.md#diagnosis-and-selective-repair) · [GPT model comparison](reports/selective-repair-gpt-full/README.md) · [Full Sol results](reports/selective-repair-sol-full/README.md) · [Calibration results](reports/selective-repair-hard/README.md) · [Website](https://wspbench.com)
 
 ## Changelog
 
 ### Current benchmark: diagnosis and selective repair
 
 The main comparison gives one arm behavior probes and another arm the same probes plus weights. A scripted solver uses the same probe budget. In the 80-session experiment, GPT-6.1 Sol repaired 14 of 32 faults with behavior probes and 30 of 32 with the same probes plus weights. The scripted solver repaired 5 of 32. All three preserved all eight clean controls.
+
+The four-model comparison adds GPT‑6 Astra, GPT‑6 Luna, and GPT‑6.1 Terra on the same cases and limits. The report lists scored coverage, the effect of missing outcomes, and metered costs. [Full comparison](reports/selective-repair-gpt-full/README.md)
 
 The earlier pilot used one case per fault mechanism and one clean control. In a follow-up with equal 12,000-token limits, Sol repaired one of four faults with behavior alone and two of four with weights and behavior. Two weight-assisted sessions exhausted the token allowance. [Follow-up results](reports/selective-repair-hard/budget-check.md)
 

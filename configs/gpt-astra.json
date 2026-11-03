@@ -1,0 +1,27 @@
+{
+  "id": "openai-astra",
+  "provider": "openai",
+  "model": "openai/gpt-6-astra",
+  "api_key_env": "OPENAI_API_KEY",
+  "snapshot": "gpt-6-astra",
+  "snapshot_kind": "provider-alias-no-dated-snapshot-published",
+  "verified_at": "2026-11-03",
+  "generate_config": {
+    "reasoning_effort": "high",
+    "reasoning_summary": "none"
+  },
+  "model_args": {
+    "responses_api": true,
+    "service_tier": "default",
+    "streaming": true
+  },
+  "pricing": {
+    "input_per_million": 10,
+    "cache_read_per_million": 1,
+    "cache_write_per_million": 12.5,
+    "output_per_million": 50,
+    "verified_at": "2026-11-03",
+    "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "cache_ttl": "30m_default"
+  }
+}
