@@ -92,3 +92,19 @@ second runs the 80 API sessions with a 24,000-token output limit in each
 arm. At the recorded rates, the maximum reservation is $28.80. The report
 estimates the paired repair difference on fault cases and resamples seed
 blocks for the uncertainty interval. It lists clean controls separately.
+
+### Full GPT comparison
+
+After generating the Sol cases from an example seed above, freeze the
+Astra, Luna, and Terra sessions using the same seed. The paid command
+checks the Sol manifest to verify that cases, scoring, and limits match.
+
+```sh
+uv run python experiments/run_selective_repair.py --suite gpt-full --seed 123456 --output .wspbench-runs/selective-repair-gpt-full-01
+uv run python experiments/run_selective_repair.py --suite gpt-full --seed 123456 --output .wspbench-runs/selective-repair-gpt-full-01 --match-manifest .wspbench-runs/selective-repair-sol-full-01/manifest.json --execute
+uv run python experiments/report_full_comparison.py .wspbench-runs/selective-repair-sol-full-01 .wspbench-runs/selective-repair-gpt-full-01
+```
+
+The comparison adds 240 API sessions, with a maximum reservation of
+$159.84 at the recorded rates. See the
+[full comparison](../reports/selective-repair-gpt-full/README.md).

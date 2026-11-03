@@ -216,20 +216,27 @@ async def evaluate(client, model, case, arm, limits=LIMITS):
 
 
 def freeze(output, seed, suite_name="original"):
-    if suite_name in ("hard", "hard-budget-check", "sol-full"):
+    if suite_name in ("hard", "hard-budget-check", "sol-full", "gpt-full"):
         import repair_hard_cases as suite
     elif suite_name == "original":
         suite = repair_cases
     else:
         raise ValueError(f"Unknown suite {suite_name!r}")
-    models = [m for m in json.loads((ROOT / "configs/gpt-comparison.json").read_text())["models"]
-              if m["id"] in ("openai-luna", "openai-sol")]
-    full = suite_name == "sol-full"
+    roster = json.loads((ROOT / "configs/gpt-comparison.json").read_text())["models"]
+    comparison = suite_name == "gpt-full"
+    full = suite_name in ("sol-full", "gpt-full")
     matched = full or suite_name == "hard-budget-check"
     limits = SOL_FULL_LIMITS if full else HARD_CHECK_LIMITS if matched else LIMITS
     arms = ("behavior", "weights_behavior") if matched else tuple(ARMS)
-    if matched:
-        models = [model for model in models if model["id"] == "openai-sol"]
+    if comparison:
+        model_ids = {"openai-luna", "openai-terra"}
+    elif matched:
+        model_ids = {"openai-sol"}
+    else:
+        model_ids = {"openai-luna", "openai-sol"}
+    models = [model for model in roster if model["id"] in model_ids]
+    if comparison:
+        models.append(json.loads((ROOT / "configs/gpt-astra.json").read_text()))
     blocks = {}
     if full:
         seeds = list(range(seed, seed + SOL_FULL_BLOCKS))
@@ -245,12 +252,12 @@ def freeze(output, seed, suite_name="original"):
             raise ValueError("The full experiment requires five cases per seed")
     else:
         cases = suite.make_cases(seed, fixed_decoy=True) if matched else suite.make_cases(seed)
-    if len(models) != (1 if matched else 2) or len(cases) < 3 or len({c.id for c in cases}) != len(cases):
+    if len(models) != (3 if comparison else 1 if matched else 2) or len(cases) < 3 or len({c.id for c in cases}) != len(cases):
         raise ValueError("Unexpected model roster or case IDs")
     paid = [(m, c, a) for m in models for c in cases for a in arms]
     random.Random(seed).shuffle(paid)
     cap = sum(maximum_session_cost(m, limits) for m, _, _ in paid)
-    ceiling = 30 if full else 5
+    ceiling = 160 if comparison else 30 if full else 5
     if cap > ceiling:
         raise ValueError(f"Experiment exceeds the ${ceiling} reservation ceiling")
     baseline = {c.id: scripted(c, suite) for c in cases}
@@ -302,8 +309,15 @@ def freeze(output, seed, suite_name="original"):
     return manifest, paid, baseline, limits
 
 
-async def run(output, seed, execute, suite_name="original"):
+async def run(output, seed, execute, suite_name="original", match_manifest=None):
     manifest, paid, baseline, limits = freeze(output, seed, suite_name)
+    if suite_name == "gpt-full" and execute:
+        if match_manifest is None:
+            raise ValueError("Provide the Sol manifest with --match-manifest before execution")
+        reference = json.loads(match_manifest.read_text())
+        for field in ("cases", "arms", "limits", "system", "primary_metric"):
+            if manifest[field] != reference[field]:
+                raise ValueError(f"Comparison differs from the Sol manifest in {field}")
     digest = serialization_digest(manifest)
 
     def result_path(cell):
@@ -317,7 +331,7 @@ async def run(output, seed, execute, suite_name="original"):
         return
     load_dotenv(ROOT / ".env")
     ledger = BudgetLedger(_project_ledger())
-    queue = asyncio.Semaphore(16 if suite_name == "sol-full" else 12 if suite_name == "hard" else 8)
+    queue = asyncio.Semaphore(16 if suite_name in ("sol-full", "gpt-full") else 12 if suite_name == "hard" else 8)
     async with AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"], max_retries=0, timeout=90) as client:
         async def dispatch(model, case, arm):
             cell = {"model": model["snapshot"], "case": case.id, "arm": arm}
@@ -353,7 +367,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--seed", required=True, type=int)
-    parser.add_argument("--suite", choices=("original", "hard", "hard-budget-check", "sol-full"), default="original")
+    parser.add_argument("--suite", choices=("original", "hard", "hard-budget-check", "sol-full", "gpt-full"), default="original")
+    parser.add_argument("--match-manifest", type=Path)
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
-    asyncio.run(run(args.output.resolve(), args.seed, args.execute, args.suite))
+    asyncio.run(run(args.output.resolve(), args.seed, args.execute, args.suite, args.match_manifest))
