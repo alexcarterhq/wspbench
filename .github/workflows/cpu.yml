@@ -41,7 +41,7 @@ jobs:
           enable-cache: true
       - name: Install locked CPU test dependencies
         run: uv sync --frozen --extra dev --extra generation --extra eval
-      - name: Regrade the public pilot without model inference
-        run: uv run --no-sync wspbench-replay
+      - name: Validate selective repair cases without model inference
+        run: uv run --no-sync python experiments/run_selective_repair.py --suite hard-budget-check --seed 82417 --output "${{ runner.temp }}/wspbench-repair"
       - name: Run CPU and mock-provider tests
         run: uv run --no-sync python -m pytest -q

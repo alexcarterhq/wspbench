@@ -1,6 +1,6 @@
 # Changelog
 
-## Diagnosis and selective repair
+## v0.2.2: Diagnosis and selective repair
 
 WSPBench now measures whether weight access helps an agent diagnose a failure and choose a patch that preserves correct behavior. Behavior probes, behavior plus weights, and behavior plus weights and activations are separate conditions. The scripted baseline uses the same probe budget. We kept the paired Read pilots as sanity checks after three GPT models reached 100% with true checkpoints.
 

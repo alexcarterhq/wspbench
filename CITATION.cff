@@ -6,15 +6,13 @@ type: software
 title: "WSPBench: controlled weight-space programming evaluation"
 authors:
   - name: WSPBench contributors
-version: "0.2.0"
+version: "0.2.2"
 date-released: "2026-11-03"
 license: Apache-2.0
 abstract: >-
-  Independent small-network research preview separating no-tool weight reasoning,
-  bounded computational weight analysis, and instrumented diagnosis and repair.
-  The public pilot uses dataset revision 0.2.1 and contains eighteen audited
-  condition-A development sessions. Public CPU replay regrades saved submissions;
-  it does not reproduce proprietary model inference.
+  WSPBench compares diagnosis and selective repair with and without access to
+  neural network weights. It grades repairs on hidden examples for both fault
+  correction and preservation of previously correct behavior.
 keywords:
   - weight-space programming
   - language-model evaluation
