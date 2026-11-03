@@ -123,3 +123,12 @@ uv run python experiments/report_full_comparison.py .wspbench-runs/selective-rep
 Only the retry supplies the score for an interrupted cell. The report
 includes metered usage from both attempts and marks sessions for which
 the API did not return complete usage.
+
+After the first retry completes, use `--after` to retry only its API
+timeouts. This pass runs one session at a time. Pass both retry directories
+to the reporter in execution order.
+
+```sh
+uv run python experiments/retry_selective_repair.py .wspbench-runs/selective-repair-gpt-full-01 .wspbench-runs/selective-repair-gpt-full-retry-02 --after .wspbench-runs/selective-repair-gpt-full-retry-01 --execute
+uv run python experiments/report_full_comparison.py .wspbench-runs/selective-repair-sol-full-01 .wspbench-runs/selective-repair-gpt-full-01 --retry .wspbench-runs/selective-repair-gpt-full-retry-01 --retry .wspbench-runs/selective-repair-gpt-full-retry-02
+```

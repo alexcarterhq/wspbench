@@ -19,17 +19,11 @@ PROTOCOL_FIELDS = ("cases", "system", "arms", "limits", "primary_metric")
 RETRYABLE_ERRORS = {"APIError", "APITimeoutError"}
 
 
-def load_comparison(roots, retry_root=None):
+def load_comparison(roots, retry_roots=()):
     reference = None
     models = {}
     results = {}
-    retry_candidates = {}
-    retries = {}
-    retry_manifest = None
-    retry_plan = None
-    if retry_root is not None:
-        retry_manifest, _, retries = load_results(retry_root)
-        retry_plan = json.loads((retry_root / "retry-plan.json").read_text())
+    manifests = []
     for root in roots:
         manifest, planned, rows = load_results(root)
         if reference is None:
@@ -61,49 +55,65 @@ def load_comparison(roots, retry_root=None):
                 raise ValueError(f"Scripted baseline changed on {key[1]}")
             results[key] = row
 
-        if retry_root is not None and manifest == retry_manifest:
-            retry_candidates = {
-                key: row for key, row in rows.items()
-                if key[0] != SCRIPTED and row["status"] == "infrastructure_failure"
-                and row.get("error") in RETRYABLE_ERRORS
-            }
+        manifests.append(manifest)
 
-    if retry_root is not None:
-        if not retry_candidates:
-            raise ValueError("Retry manifest must match an original run with API failures")
-        if set(retries) - retry_candidates.keys():
-            raise ValueError("Retry records must belong to original API failures")
-        manifest_digest = serialization_digest(retry_manifest)
-        planned_retries = [cell_key(cell) for cell in retry_plan["cells"]]
-        if (retry_plan["original_manifest_digest"] != manifest_digest
-                or len(planned_retries) != len(retry_candidates)
-                or set(planned_retries) != retry_candidates.keys()):
-            raise ValueError("Retry plan must match the exact set of original API failures")
-        concurrency = retry_plan["concurrency"]
-        if type(concurrency) is not int or concurrency < 1:
-            raise ValueError("Retry plan must record positive concurrency")
-        for key, row in retries.items():
-            original = retry_candidates[key]
-            if row.get("prompt_digest") != original["prompt_digest"]:
-                raise ValueError(f"Retry prompt differs for {key!r}")
-            if row.get("retry_of") != original["reservation_id"]:
-                raise ValueError(f"Retry lineage differs for {key!r}")
-            cell = dict(zip(("model", "case", "arm"), key, strict=True))
-            digest = serialization_digest([manifest_digest, cell])
-            reservation = serialization_digest(["api-error-retry-1", digest])
-            if row.get("reservation_id") != reservation:
-                raise ValueError(f"Unexpected retry reservation for {key!r}")
-            path = retry_root / "runs" / digest / "result.json"
-            if not path.is_file():
-                raise ValueError(f"Retry record path differs from the original cell hash for {key!r}")
-
+    waves = load_retry_waves(retry_roots, manifests, results)
     prompt_digests = defaultdict(set)
     for (model, case_id, access), row in results.items():
         if model != SCRIPTED:
             prompt_digests[case_id, access].add(row["prompt_digest"])
     if any(len(digests) > 1 for digests in prompt_digests.values()):
         raise ValueError("Initial model prompts differ within an access condition")
-    return reference, models, results, retries, retry_plan
+    return reference, models, results, waves
+
+
+def load_retry_waves(roots, original_manifests, original_results):
+    waves = []
+    previous = original_results
+    first_manifest = None
+    for wave, root in enumerate(roots, start=1):
+        manifest, _, rows = load_results(root)
+        plan = json.loads((root / "retry-plan.json").read_text())
+        if manifest not in original_manifests or (wave > 1 and manifest != first_manifest):
+            raise ValueError("Retry manifest must match the original GPT run")
+        first_manifest = manifest
+        roster = {model["snapshot"] for model in manifest["models"]}
+        errors = RETRYABLE_ERRORS if wave == 1 else {"APITimeoutError"}
+        candidates = {
+            key: row for key, row in previous.items()
+            if key[0] in roster and row["status"] == "infrastructure_failure"
+            and row.get("error") in errors
+        }
+        manifest_digest = serialization_digest(manifest)
+        planned = [cell_key(cell) for cell in plan["cells"]]
+        if (plan["original_manifest_digest"] != manifest_digest
+                or not candidates or len(planned) != len(candidates)
+                or set(planned) != candidates.keys()):
+            raise ValueError("Retry plan must match the exact set of eligible API failures")
+        if set(rows) - candidates.keys():
+            raise ValueError("Retry records must belong to eligible API failures")
+        if wave < len(roots) and set(rows) != candidates.keys():
+            raise ValueError("A later retry wave requires complete records for the preceding wave")
+        concurrency = plan["concurrency"]
+        if type(concurrency) is not int or concurrency < 1:
+            raise ValueError("Retry plan must record positive concurrency")
+        for key, row in rows.items():
+            prior = candidates[key]
+            if row.get("prompt_digest") != prior["prompt_digest"]:
+                raise ValueError(f"Retry prompt differs for {key!r}")
+            if row.get("retry_of") != prior["reservation_id"]:
+                raise ValueError(f"Retry lineage differs for {key!r}")
+            cell = dict(zip(("model", "case", "arm"), key, strict=True))
+            digest = serialization_digest([manifest_digest, cell])
+            reservation = serialization_digest([f"api-error-retry-{wave}", digest])
+            if row.get("reservation_id") != reservation:
+                raise ValueError(f"Unexpected retry reservation for {key!r}")
+            path = root / "runs" / digest / "result.json"
+            if not path.is_file():
+                raise ValueError(f"Retry record path differs from the original cell hash for {key!r}")
+        waves.append((plan, rows))
+        previous = rows
+    return waves
 
 
 def repair_count(rows):
@@ -129,7 +139,7 @@ def metered_cost(records, config):
 
 
 def summarize_arm(results, cases, model, access, output_limit, config=None,
-                  *, originals=None, retries=None):
+                  *, originals=None, retry_batches=()):
     keys = [(model, case["id"], access) for case in cases]
     rows = [results.get(key) for key in keys]
     recorded = [row for row in rows if row is not None]
@@ -137,7 +147,7 @@ def summarize_arm(results, cases, model, access, output_limit, config=None,
     retry_cost, retry_unknown = (0.0, 0)
     if config is not None:
         initial_cost, initial_unknown = metered_cost((originals[key] for key in keys if key in originals), config)
-        retry_cost, retry_unknown = metered_cost((retries[key] for key in keys if key in retries), config)
+        retry_cost, retry_unknown = metered_cost((batch[key] for batch in retry_batches for key in keys if key in batch), config)
     return {
         "faults": repair_count(row for row, case in zip(rows, cases, strict=True) if not case["clean"]),
         "clean": repair_count(row for row, case in zip(rows, cases, strict=True) if case["clean"]),
@@ -182,9 +192,16 @@ def paired_effect(results, cases, model):
     }
 
 
-def summarize(roots, retry_root=None):
-    manifest, models, originals, retries, retry_plan = load_comparison(roots, retry_root)
-    results = originals | retries
+def summarize(roots, retry_roots=()):
+    if isinstance(retry_roots, Path):
+        retry_roots = (retry_roots,)
+    if len(retry_roots) > 2:
+        raise ValueError("Expected at most two API retry waves")
+    manifest, models, originals, waves = load_comparison(roots, retry_roots)
+    retry_batches = [rows for _, rows in waves]
+    results = originals.copy()
+    for rows in retry_batches:
+        results.update(rows)
     cases = manifest["cases"]
     faults = [case for case in cases if not case["clean"]]
     limits = manifest["limits"]
@@ -196,11 +213,11 @@ def summarize(roots, retry_root=None):
     for model, config in models.items():
         arms = {
             arm: summarize_arm(results, cases, model, arm, output_limit, config,
-                               originals=originals, retries=retries)
+                               originals=originals, retry_batches=retry_batches)
             for arm in ACCESS
         }
         served = sorted({response["model"]
-                         for batch in (originals, retries)
+                         for batch in (originals, *retry_batches)
                          for key, row in batch.items() if key[0] == model
                          for response in row.get("responses", [])})
         models_summary.append({
@@ -216,6 +233,20 @@ def summarize(roots, retry_root=None):
             },
         })
     arms = [arm for model in models_summary for arm in model["arms"].values()]
+    wave_summaries = []
+    for plan, rows in waves:
+        billing = [
+            metered_cost((row for key, row in rows.items() if key[0] == model), config)
+            for model, config in models.items()
+        ]
+        wave_summaries.append({
+            "planned": len(plan["cells"]),
+            "recorded": len(rows),
+            "resolved": sum(row["status"] in SCORED | ZERO_CREDIT for row in rows.values()),
+            "cost_usd": sum(cost for cost, _ in billing),
+            "unknown_costs": sum(unknown for _, unknown in billing),
+            "concurrency": plan["concurrency"],
+        })
     return {
         "faults": len(faults),
         "clean": len(cases) - len(faults),
@@ -226,13 +257,14 @@ def summarize(roots, retry_root=None):
         "cost_usd": sum(arm["cost_usd"] for arm in arms),
         "unknown_costs": sum(arm["unknown_costs"] for arm in arms),
         "retry": {
-            "planned": len(retry_plan["cells"]),
-            "recorded": len(retries),
-            "resolved": sum(row["status"] in SCORED | ZERO_CREDIT for row in retries.values()),
+            "planned": sum(wave["planned"] for wave in wave_summaries),
+            "recorded": sum(wave["recorded"] for wave in wave_summaries),
+            "resolved": sum(wave["resolved"] for wave in wave_summaries),
             "cost_usd": sum(arm["retry_cost_usd"] for arm in arms),
             "unknown_costs": sum(arm["retry_unknown_costs"] for arm in arms),
-            "concurrency": retry_plan["concurrency"],
-        } if retry_root is not None else None,
+            "concurrency": wave_summaries[0]["concurrency"],
+            "waves": wave_summaries,
+        } if wave_summaries else None,
         "models": models_summary,
         "baseline": baseline,
     }
@@ -259,13 +291,23 @@ def render(summary):
     retry = summary["retry"]
     retry_note = ""
     if retry is not None:
+        first = retry["waves"][0]
         retry_note = (
             f"\n\nWe retried only sessions interrupted by API errors, reducing concurrency "
-            f"from 16 to {retry['concurrency']}. "
-            f"{retry['recorded']}/{retry['planned']} retries returned records and "
-            f"{retry['resolved']} resolved the original API interruption. The comparison uses "
-            "the retry outcome for those sessions and keeps both attempts in the cost totals. "
-            f"Metered retry cost was {dollars(retry['cost_usd'], retry['unknown_costs'])}."
+            f"from 16 to {first['concurrency']}. "
+            f"The first round recorded {first['recorded']}/{first['planned']} attempts "
+            f"and recovered {first['resolved']} scoreable outcomes."
+        )
+        if len(retry["waves"]) == 2:
+            second = retry["waves"][1]
+            retry_note += (
+                f" We then retried the remaining timeouts at concurrency {second['concurrency']}. "
+                f"This recorded {second['recorded']}/{second['planned']} attempts and recovered "
+                f"{second['resolved']} more scoreable outcomes."
+            )
+        retry_note += (
+            " Scores use the latest recorded outcome for each session. Costs include metered usage "
+            f"from every attempt. Metered retry cost was {dollars(retry['cost_usd'], retry['unknown_costs'])}."
         )
     lines = [
         "# Full selective repair model comparison",
@@ -350,7 +392,8 @@ def render(summary):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("roots", nargs="+", type=Path, help="Private full experiment directories")
-    parser.add_argument("--retry", type=Path, help="Private directory with retries of interrupted API sessions")
+    parser.add_argument("--retry", type=Path, action="append", default=[],
+                        help="Private retry directory, repeat in chronological order for a second wave")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable aggregate metrics")
     args = parser.parse_args()
     summary = summarize(args.roots, args.retry)
