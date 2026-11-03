@@ -1,4 +1,4 @@
-"""Run a frozen calibration of diagnosis and selective repair."""
+"""Run a frozen experiment in diagnosis and selective repair."""
 from __future__ import annotations
 
 import argparse
@@ -31,6 +31,8 @@ ARMS = {
 }
 LIMITS = Limits(model_turns=5, input_tokens=48_000, output_tokens=5_000)
 HARD_CHECK_LIMITS = replace(LIMITS, output_tokens=12_000)
+SOL_FULL_LIMITS = replace(LIMITS, output_tokens=24_000)
+SOL_FULL_BLOCKS = 8
 PRE_PROBES, POST_PROBES = 2, 4
 SYSTEM = """You are diagnosing and repairing a controller. Make exactly one function call per turn.
 Commit predictions for every intervention before selecting or testing any patch.
@@ -214,7 +216,7 @@ async def evaluate(client, model, case, arm, limits=LIMITS):
 
 
 def freeze(output, seed, suite_name="original"):
-    if suite_name in ("hard", "hard-budget-check"):
+    if suite_name in ("hard", "hard-budget-check", "sol-full"):
         import repair_hard_cases as suite
     elif suite_name == "original":
         suite = repair_cases
@@ -222,19 +224,35 @@ def freeze(output, seed, suite_name="original"):
         raise ValueError(f"Unknown suite {suite_name!r}")
     models = [m for m in json.loads((ROOT / "configs/gpt-comparison.json").read_text())["models"]
               if m["id"] in ("openai-luna", "openai-sol")]
-    check = suite_name == "hard-budget-check"
-    limits = HARD_CHECK_LIMITS if check else LIMITS
-    arms = ("behavior", "weights_behavior") if check else tuple(ARMS)
-    if check:
+    full = suite_name == "sol-full"
+    matched = full or suite_name == "hard-budget-check"
+    limits = SOL_FULL_LIMITS if full else HARD_CHECK_LIMITS if matched else LIMITS
+    arms = ("behavior", "weights_behavior") if matched else tuple(ARMS)
+    if matched:
         models = [model for model in models if model["id"] == "openai-sol"]
-    cases = suite.make_cases(seed, fixed_decoy=True) if check else suite.make_cases(seed)
-    if len(models) != (1 if check else 2) or len(cases) < 3 or len({c.id for c in cases}) != len(cases):
-        raise ValueError("Unexpected calibration roster or case IDs")
+    blocks = {}
+    if full:
+        seeds = list(range(seed, seed + SOL_FULL_BLOCKS))
+        if 82417 in seeds:
+            raise ValueError("The full experiment must exclude the calibration seed")
+        cases = []
+        for block, case_seed in enumerate(seeds, start=1):
+            for case in suite.make_cases(case_seed, fixed_decoy=True):
+                case.id = f"s{block:02d}-{case.id}"
+                blocks[case.id] = block
+                cases.append(case)
+        if len(cases) != SOL_FULL_BLOCKS * 5:
+            raise ValueError("The full experiment requires five cases per seed")
+    else:
+        cases = suite.make_cases(seed, fixed_decoy=True) if matched else suite.make_cases(seed)
+    if len(models) != (1 if matched else 2) or len(cases) < 3 or len({c.id for c in cases}) != len(cases):
+        raise ValueError("Unexpected model roster or case IDs")
     paid = [(m, c, a) for m in models for c in cases for a in arms]
     random.Random(seed).shuffle(paid)
     cap = sum(maximum_session_cost(m, limits) for m, _, _ in paid)
-    if cap > 5:
-        raise ValueError("Calibration exceeds the $5 reservation ceiling")
+    ceiling = 30 if full else 5
+    if cap > ceiling:
+        raise ValueError(f"Experiment exceeds the ${ceiling} reservation ceiling")
     baseline = {c.id: scripted(c, suite) for c in cases}
     fixtures = []
     for case in cases:
@@ -244,6 +262,7 @@ def freeze(output, seed, suite_name="original"):
         accepted = [candidate for candidate in forecasts if case.grade(forecasts, candidate)["success"]]
         fixtures.append({
             "id": case.id, "mechanism": case.kind, "clean": case.kind == "clean",
+            **({"block": blocks[case.id]} if full else {}),
             "candidate_count": len(forecasts), "passing_candidate_count": len(accepted),
             "input_digest": serialization_digest([case.public, case.weights]),
             "scorer_digest": serialization_digest([
@@ -251,11 +270,20 @@ def freeze(output, seed, suite_name="original"):
                 case._retention_labels.tolist(), forecasts,
             ]),
         })
+    if full:
+        fault_counts = {mechanism: sum(c.kind == mechanism for c in cases)
+                        for mechanism in (*suite.FAULTS, "clean")}
+        if any(count != SOL_FULL_BLOCKS for count in fault_counts.values()):
+            raise ValueError("Fault mechanisms and clean controls must be balanced")
+        for field in ("input_digest", "scorer_digest"):
+            if len({item[field] for item in fixtures}) != len(fixtures):
+                raise ValueError(f"Full experiment contains duplicate {field}")
     sources = ["run_selective_repair.py", "repair_cases.py"]
     if suite_name != "original":
         sources.append("repair_hard_cases.py")
     manifest = {"version": "selective-repair-calibration-4", "suite": suite_name,
                 "seed": seed, "maximum_cost_usd": cap,
+                **({"block_seeds": seeds, "primary_metric": "paired_fault_repair_success"} if full else {}),
                 "arms": {a: dict(zip(("weights", "behavior", "activations"), flags, strict=True))
                          for a, flags in ARMS.items() if a in arms},
                 "models": models, "system": SYSTEM,
@@ -289,7 +317,7 @@ async def run(output, seed, execute, suite_name="original"):
         return
     load_dotenv(ROOT / ".env")
     ledger = BudgetLedger(_project_ledger())
-    queue = asyncio.Semaphore(12 if suite_name == "hard" else 8)
+    queue = asyncio.Semaphore(16 if suite_name == "sol-full" else 12 if suite_name == "hard" else 8)
     async with AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"], max_retries=0, timeout=90) as client:
         async def dispatch(model, case, arm):
             cell = {"model": model["snapshot"], "case": case.id, "arm": arm}
@@ -325,7 +353,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--seed", required=True, type=int)
-    parser.add_argument("--suite", choices=("original", "hard", "hard-budget-check"), default="original")
+    parser.add_argument("--suite", choices=("original", "hard", "hard-budget-check", "sol-full"), default="original")
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     asyncio.run(run(args.output.resolve(), args.seed, args.execute, args.suite))
