@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.11, <3.15"
 resolution-markers = [
     "(python_full_version >= '3.12' and sys_platform == 'linux') or (python_full_version >= '3.12' and sys_platform == 'win32')",
@@ -777,7 +777,7 @@ wheels = [
 
 [[package]]
 name = "inspect-ai"
-version = "0.3.287"
+version = "0.3.288"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "agent-client-protocol" },
@@ -822,9 +822,9 @@ dependencies = [
     { name = "zipp" },
     { name = "zstandard" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/69/b5/344db92a890a6b459d2d2ef11c1db03189aef87819b6ee15d6414a11cda7/inspect_ai-0.3.287.tar.gz", hash = "sha256:61c1cf3007448e553e05d9115309fd8c1af61b2a3a6cff260a72870c615fd0f5", size = 36799271, upload-time = "2026-10-31T16:34:41.153Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ed/58/17e75cebbeaa60b43ce811e0ce2829496f2afcf8c5329905e8ea7584dea3/inspect_ai-0.3.288.tar.gz", hash = "sha256:0ef4181d7ee5d326d0c3e555fa48f456f9d14f2e1b0d769a3492f1b585fb2083", size = 36823277, upload-time = "2026-11-07T01:24:53.812Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fd/b4/dfbcb5b0293b005ca79b28974ef0629cfcd289c96b91907d5067ae8380c2/inspect_ai-0.3.287-py3-none-any.whl", hash = "sha256:d04b1675539496a91d7852d5cb00bac7373653cb7b59a53a6e06ffb9669ef542", size = 35518329, upload-time = "2026-10-31T16:34:37.605Z" },
+    { url = "https://files.pythonhosted.org/packages/72/b7/495946bef4c1b918198798444d227336662ae6415a6946f608f19bc45803/inspect_ai-0.3.288-py3-none-any.whl", hash = "sha256:393efdf0220659db9388679ff37858f3ba91e6fd1520da48e3474e93f02c8106", size = 35607189, upload-time = "2026-11-07T01:24:49.441Z" },
 ]
 
 [[package]]
@@ -2414,14 +2414,14 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'linux' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "filelock", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "fsspec", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "jinja2", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' and sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' and sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "setuptools", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "sympy", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "typing-extensions", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
+    { name = "filelock" },
+    { name = "fsspec" },
+    { name = "jinja2" },
+    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "setuptools" },
+    { name = "sympy" },
+    { name = "typing-extensions" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2d/a5/fa947e2bbb072933f8c0ad5e02bd11126bcfc2b624fe234ac29a7b63600c/torch-2.15.0-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:e808b63d616a43b326e1a5677d45a2e5babe7a8ce27edb03ddb48e7dd9b6d663", size = 138527954, upload-time = "2026-10-28T15:16:30.29Z" },
@@ -2441,14 +2441,14 @@ resolution-markers = [
     "(python_full_version < '3.11.5' and sys_platform == 'linux') or (python_full_version < '3.11.5' and sys_platform == 'win32')",
 ]
 dependencies = [
-    { name = "filelock", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-    { name = "fsspec", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-    { name = "jinja2", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform == 'linux') or (python_full_version < '3.12' and sys_platform == 'win32')" },
-    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'linux') or (python_full_version >= '3.12' and sys_platform == 'win32')" },
-    { name = "setuptools", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-    { name = "sympy", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-    { name = "typing-extensions", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+    { name = "filelock" },
+    { name = "fsspec" },
+    { name = "jinja2" },
+    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "setuptools" },
+    { name = "sympy" },
+    { name = "typing-extensions" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.15.0%2Bcpu-cp311-cp311-linux_s390x.whl", hash = "sha256:ef0bd617c9439a54d698d95fb7c3f63efcc48c29efdd42b177e87d862cb574fa", upload-time = "2026-10-28T13:17:54Z" },
